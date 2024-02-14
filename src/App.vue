@@ -1,5 +1,4 @@
 <template>
-    <v-btn icon="mdi-account"></v-btn>
     <router-view />
 </template>
 
