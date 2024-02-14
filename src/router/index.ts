@@ -1,7 +1,9 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import DefaultView from '@/views/DefaultView.vue';
 import NotFound404View from '@/views/NotFound404View.vue';
-import MainView from '@/views/MainView.vue';
+// Роуты
+import mainRoutes from './mainRoutes';
+import authRoutes from './authRoutes';
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -9,12 +11,9 @@ const routes: Array<RouteRecordRaw> = [
         name: 'default',
         component: DefaultView,
     },
-    // 
-    {
-        path: '/main/:userHashID?',
-        name:'main',
-        component: MainView,
-    },
+    
+    ...authRoutes,  // Auth
+    ...mainRoutes,  // Main
 
     // Not Found 404
     {
