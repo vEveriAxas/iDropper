@@ -36,6 +36,7 @@
     font-size: 3.3rem;
     color: var(--bg-color-white);
     user-select: none;
+    cursor: pointer;
 }
 .navbar__buttons {
     width: max-content;
