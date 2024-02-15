@@ -1,7 +1,7 @@
 <template>
-    <div>
-        Auth View
-    </div>
+    <v-container>
+
+    </v-container>
 </template>
 
 <script setup>

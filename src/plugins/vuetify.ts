@@ -14,7 +14,7 @@ const vuetify = createVuetify({
         aliases: {
             // Регистрация псевдонимов
             ...aliases,
-            account: icons.mdiAccount,
+            account: icons.mdiYoutube,
         },
         sets: {
             mdi,
