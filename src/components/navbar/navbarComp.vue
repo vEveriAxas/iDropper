@@ -4,7 +4,7 @@
         <div class="navbar__logo-container">
             <h1 class="navbar__logo-text">iDropper</h1>
         </div>
-        <div class="navbar__buttons">
+        <div v-if="props.isShowUserActions" class="navbar__buttons">
             <v-icon class="icon-account" size="40px" icon="mdi-account-circle"></v-icon>
             <h3 class="navbar__username">John Doe Sergeevich</h3>
             <v-icon class="icon-logout" size="40px" icon="mdi-logout-variant"></v-icon>
@@ -13,7 +13,14 @@
 </template>
 
 <script setup lang="ts">
-// процент = (значение / общая ширина) * 100
+import { defineProps, withDefaults } from 'vue';
+
+const props = withDefaults(defineProps<{
+    isShowUserActions?: boolean,
+}>(), {
+    isShowUserActions: false,
+});
+
 
 
 </script>
@@ -26,18 +33,21 @@
     height: 9.2%;
     background-color: var(--bg-color-default);
 }
+
 .navbar__logo-container {
     width: max-content;
     display: flex;
     align-items: center;
     margin-left: 5%;
 }
+
 .navbar__logo-text {
     font-size: 3.3rem;
     color: var(--bg-color-white);
     user-select: none;
     cursor: pointer;
 }
+
 .navbar__buttons {
     width: max-content;
     max-width: 24%;
@@ -52,11 +62,13 @@
     transition: color .4s ease;
     cursor: pointer;
 }
+
 .icon-account:hover {
     color: var(--hover-default);
     transition: color .4s ease;
 }
-.icon-account:hover ~ .navbar__username{
+
+.icon-account:hover~.navbar__username {
     color: var(--hover-default);
     transition: color .4s ease;
 }
@@ -68,6 +80,7 @@
     transition: color .4s ease;
     cursor: pointer;
 }
+
 .icon-logout:hover {
     color: var(--hover-default);
     transition: color .4s ease;
@@ -85,12 +98,13 @@
     transition: color .4s ease;
     cursor: pointer;
 }
+
 .navbar__username:hover {
     color: var(--hover-default);
     transition: color .4s ease;
 }
-.navbar__username:hover ~ .icon-account {
+
+.navbar__username:hover~.icon-account {
     color: var(--hover-default);
     transition: color .4s ease;
-}
-</style>
+}</style>

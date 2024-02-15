@@ -7,7 +7,6 @@ export default  [
         name:'main',
         component: MainView,
         children: [
-
         ],
     },
 ] as Array<RouteRecordRaw>
