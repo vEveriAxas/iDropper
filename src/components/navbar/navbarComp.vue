@@ -5,9 +5,9 @@
             <h1 class="navbar__logo-text">iDropper</h1>
         </div>
         <div class="navbar__buttons">
-            <v-icon class="icon-account" size="50px" icon="mdi-account-circle"></v-icon>
+            <v-icon class="icon-account" size="40px" icon="mdi-account-circle"></v-icon>
             <h3 class="navbar__username">John Doe Sergeevich</h3>
-            <v-icon class="icon-logout" size="50px" icon="mdi-logout-variant"></v-icon>
+            <v-icon class="icon-logout" size="40px" icon="mdi-logout-variant"></v-icon>
         </div>
     </div>
 </template>
@@ -33,7 +33,7 @@
     margin-left: 5%;
 }
 .navbar__logo-text {
-    font-size: 3.75rem;
+    font-size: 3.3rem;
     color: var(--bg-color-white);
     user-select: none;
 }
@@ -76,7 +76,7 @@
 .navbar__username {
     color: var(--bg-color-white);
     font-weight: 200;
-    font-size: 1.6rem;
+    font-size: 1.35rem;
     margin-left: 0.5rem;
     overflow: hidden;
     white-space: nowrap;
