@@ -35,11 +35,14 @@ onMounted(() => {
 :root {
     /* Basic style */
     --shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.3);
+    --border-thin: 1px solid var(--bg-color-default);
+    --border: 2px solid var(--bg-color-default);
 
     /* Bacground color */
     --bg-color-white: #FFFFFF;
     --bg-color-default: #359ABA;
     --bg-color-op-blue: rgba(12, 151, 194, 0.17);
+    --bg-color-gray: #D9D9D9;
     
     /* Hover color */
     --hover-default: #D9D9D9;
