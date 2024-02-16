@@ -46,6 +46,7 @@ onMounted(() => {
 
     /* Color text */
     --color-default: #359ABA;
+    --color-gray: rgb(95, 95, 95);
     
     /* Font */
     --font: "Rubik", sans-serif !important;

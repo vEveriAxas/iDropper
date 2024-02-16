@@ -30,12 +30,16 @@ import { aliases } from 'vuetify/iconsets/mdi';
                     ></v-text-field>
  
                 </div>
-                <v-btn class="auth-form__confirm-btn">Подтвердить</v-btn>
+                <v-btn 
+                class="auth-form__confirm-btn"
+                density="default"
+                >Подтвердить</v-btn>
 
                 <!-- Блок Подсказка "Забыли пароль?" -->
                 <div class="auth-form__hint">
-                    <v-card-text>Забыли пароль?</v-card-text>
-                    <a href="">Нажмите здесь</a>
+                    <p class="hint-question">Забыли пароль?</p>
+                    <a class="hint-href" href="">Нажмите здесь</a>
+                    <v-spacer></v-spacer>
                 </div>
             </v-form>
         </v-card>
@@ -56,7 +60,7 @@ import { aliases } from 'vuetify/iconsets/mdi';
 }
 .auth-form__container {
     width: 600px;
-    height: 594px;
+    height: 570px;
     box-shadow: var(--shadow);
     background-color: var(--bg-color-op-blue);
     border-radius: 15px !important;
@@ -64,6 +68,17 @@ import { aliases } from 'vuetify/iconsets/mdi';
 }
 .auth-form__input-block {
     margin-top: 50px;
+}
+
+.auth-form__input-block + .auth-form__input-block {
+    margin-top: 20px;
+}
+.auth-form__confirm-btn {
+    margin: 1.5rem 1.2rem 0 0;
+    align-self: flex-end;
+    font-size: 13px;
+    color: var(--color-default);
+    border-radius: 10px;
 }
 .input-block__subtitle {
     color: var(--color-default);
@@ -73,6 +88,8 @@ import { aliases } from 'vuetify/iconsets/mdi';
 .auth-form {
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
     padding: 2.2rem 3.8rem;
 }
 .auth-form__title {
@@ -81,6 +98,18 @@ import { aliases } from 'vuetify/iconsets/mdi';
     font-weight: 600;
 }
 .input-block__input {
+    margin-top: .3rem;
 }
-
+.auth-form__hint {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 3rem;
+}
+.hint-question {
+    color: var(--color-);
+}
+.hint-href {
+    margin-left: .6rem;
+}
 </style>
