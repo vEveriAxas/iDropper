@@ -11,10 +11,9 @@ import { aliases } from 'vuetify/iconsets/mdi';
                     <v-card-subtitle class="input-block__subtitle">E-mail</v-card-subtitle>
                     <v-text-field 
                     class="input-block__input"
-                    variant="plain"
-                    rounded="xl"
-                    elevation="10"
                     bg-color="var(--bg-color-white)"
+                    variant="solo-filled"
+                    rounded="lg"
                     placeholder="Адрес электронной почты"
                     ></v-text-field>
                 </div>
@@ -24,11 +23,12 @@ import { aliases } from 'vuetify/iconsets/mdi';
                     <v-card-subtitle class="input-block__subtitle">Пароль</v-card-subtitle>
                     <v-text-field 
                     class="input-block__input"
-                    variant="outlined"
-                    rounded="xl"
+                    variant="solo-filled"
+                    rounded="lg"
                     bg-color="var(--bg-color-white)"
                     placeholder="Введите пароль"
                     ></v-text-field>
+ 
                 </div>
                 <v-btn class="auth-form__confirm-btn">Подтвердить</v-btn>
 
@@ -61,6 +61,14 @@ import { aliases } from 'vuetify/iconsets/mdi';
     background-color: var(--bg-color-op-blue);
     border-radius: 15px !important;
     overflow: hidden;
+}
+.auth-form__input-block {
+    margin-top: 50px;
+}
+.input-block__subtitle {
+    color: var(--color-default);
+    font-weight: 400;
+    font-size: 16px;
 }
 .auth-form {
     height: 100%;

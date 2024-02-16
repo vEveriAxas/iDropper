@@ -30,7 +30,7 @@ const props = withDefaults(defineProps<{
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 9.2%;
+    height: 7%;
     background-color: var(--bg-color-default);
 }
 
@@ -42,7 +42,7 @@ const props = withDefaults(defineProps<{
 }
 
 .navbar__logo-text {
-    font-size: 3.3rem;
+    font-size: 3rem;
     color: var(--bg-color-white);
     user-select: none;
     cursor: pointer;
