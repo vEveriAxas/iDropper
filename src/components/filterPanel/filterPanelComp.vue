@@ -1,7 +1,6 @@
 <template>
     <div class="filter-panel__container">
         <div class="filter-panel__input-block">
-
             <!-- Поле поиска -->
             <v-text-field
             class="input-block__search-input"

@@ -22,6 +22,7 @@
             prepend-icon="mdi-hospital-building" 
             title="Больницы"
             base-color="var(--color-drawer)"
+
             value="hospitals">
                 <template v-slot:append>
                     <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>
@@ -55,6 +56,7 @@
             prepend-icon="mdi-bed-outline" 
             title="Койки"
             base-color="var(--color-drawer)"
+
             value="beds">
                 <template v-slot:append>
                     <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>

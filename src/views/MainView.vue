@@ -29,7 +29,6 @@ const drawerWidth = ref(350);
 </script>
 
 <style scoped>
-
 .main__container {
     display: flex;
     justify-content: center;
@@ -56,6 +55,4 @@ const drawerWidth = ref(350);
     background-color: var(--bg-color-op-blue);
     box-shadow: var(--shadow);
 }
-/* Для вертикального скроллбара */
-
 </style>
