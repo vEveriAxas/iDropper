@@ -48,7 +48,8 @@ onMounted(() => {
     --hover-default: #D9D9D9;
 
     /* Color text */
-    --color-default: #359ABA;
+    /* --color-default: #359ABA; */
+    --color-default: #236690;
     --color-gray: rgb(95, 95, 95);
     
     /* Font */
