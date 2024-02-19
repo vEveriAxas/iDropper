@@ -4,7 +4,7 @@
             <h3 class="item-comp__data--title">
                 Больница: {{ (props.indexProp)+1 }}
             </h3>
-            <p class="item-comp__data--description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus, laborum. Eius sunt, asperiores, ipsum nobis quisquam iusto voluptatibus delectus suscipit possimus, ipsa repellendus veritatis eligendi!</p>
+            <p class="item-comp__data--address">г. Краснодар, ул.Красная д.1</p>
         </div>
         <div class="item-comp__actions">
             <v-btn
@@ -57,7 +57,7 @@ const props = defineProps<{
 .item-comp__data--title {
     color:var(--color-default);
 }
-.item-comp__data--description {
+.item-comp__data--address {
     height: max-content;
     color:var(--color-gray);
     overflow: hidden;
