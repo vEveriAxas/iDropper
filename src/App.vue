@@ -81,6 +81,6 @@ onMounted(() => {
 }
 
 ::-webkit-scrollbar-track {
-    background-color: var(--bg-color-white);
+    background-color: var(--bg-color-op-blue);
     /* цвет фона */
 }</style>

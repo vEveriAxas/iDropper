@@ -5,7 +5,7 @@
             <h1 class="items-list__header--title">Доступные {{ route.meta.title }}</h1>
         </div>
         <div class="items-list__wrapper">
-            <itemComp class="wrapper-item" v-for="(item, index) in 100" :itemComp="item" :index-prop="index" :key="index"></itemComp>
+            <itemComp class="wrapper-item" v-for="(item, index) in 100"  :key="index"></itemComp>
         </div>
     </div>
 </template>

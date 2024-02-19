@@ -35,6 +35,7 @@ const props = withDefaults(defineProps<{
     width: 100%;
     height: 7%;
     background-color: var(--bg-color-default);
+    z-index: 35 !important;
 }
 
 .navbar__logo-container {

@@ -4,7 +4,7 @@
         <div class="item-comp__data">
             <!-- Заголовок элемента -->
             <h3 class="item-comp__data--title">
-                Больница: {{ (props.indexProp)+1 }}
+                {{ route.meta.listItemTitle }}: 10
             </h3>
             <!-- Подзаголовок элемента -->
             <p class="item-comp__data--description">г. Краснодар, ул.Красная д.1</p>
@@ -26,9 +26,13 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue';
+import { useRoute } from 'vue-router';
+const route = useRoute();
 
 const props = defineProps<{
-    indexProp: number,
+    id?: number,
+    itemName?: string,
+    itemAddress?: string,
 }>();
 
 </script>

@@ -22,7 +22,7 @@
             prepend-icon="mdi-hospital-building" 
             title="Больницы"
             base-color="var(--color-drawer)"
-
+            @click="router.push({name: 'hospitals'})"
             value="hospitals">
                 <template v-slot:append>
                     <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>
@@ -34,6 +34,7 @@
             prepend-icon="mdi-table" 
             title="Отделения"
             base-color="var(--color-drawer)"
+            @click="router.push({name: 'departments'})"
             value="departments">
                 <template v-slot:append>
                     <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>
@@ -45,6 +46,7 @@
             prepend-icon="mdi-table-large" 
             title="Палаты"
             base-color="var(--color-drawer)"
+            @click="router.push({name: 'chambers'})"
             value="chambers">
                 <template v-slot:append>
                     <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>
@@ -56,7 +58,7 @@
             prepend-icon="mdi-bed-outline" 
             title="Койки"
             base-color="var(--color-drawer)"
-
+            @click="router.push({name: 'beds'})"
             value="beds">
                 <template v-slot:append>
                     <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>
@@ -68,6 +70,8 @@
 
 <script setup lang="ts">
 import { ref, defineProps } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 // ============================  PROPS  ================================
 const props = defineProps<{
@@ -83,10 +87,11 @@ const rail = ref(true)
 
 <style scoped>
 .navigation-drawer {
-    height: 93% !important;
+    height: 94% !important;
     background-color: var(--bg-color-op-blue);
     backdrop-filter: blur(8px);
     margin-top: auto;
     border-right: var(--border-thin);
+    z-index: 30 !important;
 }
 </style>

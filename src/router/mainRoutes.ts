@@ -15,6 +15,7 @@ export default  [
                 component: itemsListComp,
                 meta: {
                     title: 'больницы',
+                    listItemTitle: 'Больница',
                 }
             },
             // ОТДЕЛЕНИЯ
@@ -24,6 +25,7 @@ export default  [
                 component: itemsListComp,
                 meta: {
                     title: 'отделения',
+                    listItemTitle: 'Отделение',
                 }
             },
             // ПАЛАТЫ
@@ -33,6 +35,7 @@ export default  [
                 component: itemsListComp,
                 meta: {
                     title: 'палаты',
+                    listItemTitle: 'Палата',
                 }
             },
             // КОЙКИ
@@ -42,6 +45,7 @@ export default  [
                 component: itemsListComp,
                 meta: {
                     title: 'койки',
+                    listItemTitle: 'Койка',
                 }
             },
         ],
