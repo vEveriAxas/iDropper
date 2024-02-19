@@ -8,8 +8,10 @@
         </div>
         <div class="item-comp__actions">
             <v-btn
+            style="font-size: .85rem;"
             bg-color="var(--bg-color-white)"
             variant="outlined"
+            density="comfortable"
             color="var(--color-default)"
             elevation="2"
             >Открыть</v-btn>
@@ -38,7 +40,9 @@ const props = defineProps<{
     padding: 2rem 2.5rem;
 }
 .item-comp__data {
+    width: 80%;
     /* border: var(--border); */
+    padding: 0 1.5rem 0 0;
     flex-grow: 4;
 }
 .item-comp__actions {
@@ -54,6 +58,11 @@ const props = defineProps<{
     color:var(--color-default);
 }
 .item-comp__data--description {
+    height: max-content;
     color:var(--color-gray);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: .6rem 0 0 .6rem;
 }
 </style>
