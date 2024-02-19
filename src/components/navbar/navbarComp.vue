@@ -1,13 +1,16 @@
 <template>
     <!-- Шапка сервиса -->
     <div class="navbar">
+        <!-- Логотип -->
         <div class="navbar__logo-container">
             <h1 class="navbar__logo-text">iDropper</h1>
         </div>
+
+        <!-- Кнопки взаимодйествия пользователя -->
         <div v-if="props.isShowUserActions" class="navbar__buttons">
-            <v-icon class="icon-account" size="40px" icon="mdi-account-circle"></v-icon>
+            <v-icon class="icon-account" size="25px" icon="mdi-account-circle"></v-icon>
             <h3 class="navbar__username">John Doe Sergeevich</h3>
-            <v-icon class="icon-logout" size="40px" icon="mdi-logout-variant"></v-icon>
+            <v-icon class="icon-logout" size="25px" icon="mdi-logout-variant"></v-icon>
         </div>
     </div>
 </template>
@@ -42,7 +45,7 @@ const props = withDefaults(defineProps<{
 }
 
 .navbar__logo-text {
-    font-size: 3rem;
+    font-size: 2.7rem;
     color: var(--bg-color-white);
     user-select: none;
     cursor: pointer;
@@ -90,7 +93,7 @@ const props = withDefaults(defineProps<{
 .navbar__username {
     color: var(--bg-color-white);
     font-weight: 200;
-    font-size: 1.35rem;
+    font-size: 1.1rem;
     margin-left: 0.5rem;
     overflow: hidden;
     white-space: nowrap;
