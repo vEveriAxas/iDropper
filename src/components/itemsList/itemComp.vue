@@ -1,11 +1,16 @@
 <template>
     <div class="item-comp">
+        <!-- Блок данных элемента  -->
         <div class="item-comp__data">
+            <!-- Заголовок элемента -->
             <h3 class="item-comp__data--title">
                 Больница: {{ (props.indexProp)+1 }}
             </h3>
-            <p class="item-comp__data--address">г. Краснодар, ул.Красная д.1</p>
+            <!-- Подзаголовок элемента -->
+            <p class="item-comp__data--description">г. Краснодар, ул.Красная д.1</p>
         </div>
+
+        <!-- Блок взаимодействия с элементом -->
         <div class="item-comp__actions">
             <v-btn
             style="font-size: .85rem;"
@@ -57,7 +62,7 @@ const props = defineProps<{
 .item-comp__data--title {
     color:var(--color-default);
 }
-.item-comp__data--address {
+.item-comp__data--description {
     height: max-content;
     color:var(--color-gray);
     overflow: hidden;
