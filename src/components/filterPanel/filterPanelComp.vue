@@ -56,7 +56,6 @@
     width: 40px !important;
     height: 40px !important;
     margin-left: 10px;
-    border: var(--border-thin);
     color: var(--color-white);
 }
 .filter-panel__sorted-block {

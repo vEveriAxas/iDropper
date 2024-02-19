@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <navbarComp :is-show-user-actions="isShowUserActions" />  <!-- Шапка -->
+        <navbarComp :is-show-user-actions="isShowUserActions" /> <!-- Шапка -->
         <router-view /> <!-- Контент -->
     </v-app>
 </template>
@@ -15,9 +15,9 @@ const route = useRoute();
 const isShowUserActions = ref<boolean>(false);
 
 onMounted(() => {
-    setTimeout(() =>{
+    setTimeout(() => {
         const routePath: Array<string> = route.fullPath.split('/');
-        if(routePath[1] === 'main') {
+        if (routePath[1] === 'main') {
             isShowUserActions.value = true;
         }
     });
@@ -34,25 +34,28 @@ onMounted(() => {
 
 :root {
     /* Basic style */
-    --shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.3);
+    --shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.3);
     --border-thin: 1px solid var(--bg-color-default);
     --border: 2px solid var(--bg-color-default);
 
-    /* Bacground color */
+    /* Background color */
     --bg-color-white: #FFFFFF;
-    --bg-color-default: #359ABA;
+    /* --bg-color-default: #359ABA; */
+    --bg-color-default: #0ea5e9;
     --bg-color-op-blue: rgba(12, 151, 194, 0.17);
     --bg-color-gray: #D9D9D9;
-    
+    --bg-color-scrollbar: #359bbab7;
+
     /* Hover color */
     --hover-default: #D9D9D9;
 
     /* Color text */
     --color-default: #359ABA;
+    /* --color-default: #415174; */
     --color-drawer: #236690;
     --color-gray: rgb(95, 95, 95);
     --color-white: #FFFFFF;
-    
+
     /* Font */
     --font: "Rubik", sans-serif !important;
 }
@@ -61,6 +64,23 @@ onMounted(() => {
     font-family: var(--font);
     width: 100%;
     height: 100vh;
+    font-family: var(--font);
+    overflow: hidden;
 }
 
-</style>
+/* По умолчанию скроллбар в приложении отключен */
+::-webkit-scrollbar {
+    width: 6px;
+    /* ширина скроллбара */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--bg-color-scrollbar);
+    border-radius: 20px;
+    /* цвет полосы прокрутки */
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--bg-color-white);
+    /* цвет фона */
+}</style>

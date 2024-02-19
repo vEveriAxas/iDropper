@@ -3,9 +3,14 @@
         @click="rail = false">
         <v-list-item
         base-color="var(--color-default)"
+        style="cursor: pointer;"
         prepend-icon="mdi-menu">
             <template v-slot:append>
-                <v-btn variant="text" icon="mdi-chevron-left" @click.stop="rail = !rail"></v-btn>
+                <v-btn 
+                variant="text" 
+                icon="mdi-chevron-left"
+                @click.stop="rail = !rail"
+                ></v-btn>
             </template>
         </v-list-item>
 

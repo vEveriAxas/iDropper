@@ -5,6 +5,7 @@ import NotFound404View from '@/views/NotFound404View.vue';
 import mainRoutes from './mainRoutes';
 import authRoutes from './authRoutes';
 
+
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
