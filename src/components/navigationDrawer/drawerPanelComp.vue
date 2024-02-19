@@ -16,7 +16,7 @@
             <v-list-item 
             prepend-icon="mdi-hospital-building" 
             title="Больницы"
-            base-color="var(--color-default)"
+            base-color="var(--color-drawer)"
             value="hospitals">
                 <template v-slot:append>
                     <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>
@@ -27,7 +27,7 @@
             <v-list-item 
             prepend-icon="mdi-table" 
             title="Отделения"
-            base-color="var(--color-default)"
+            base-color="var(--color-drawer)"
             value="departments">
                 <template v-slot:append>
                     <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>
@@ -38,7 +38,7 @@
             <v-list-item 
             prepend-icon="mdi-table-large" 
             title="Палаты"
-            base-color="var(--color-default)"
+            base-color="var(--color-drawer)"
             value="chambers">
                 <template v-slot:append>
                     <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>
@@ -49,7 +49,7 @@
             <v-list-item 
             prepend-icon="mdi-bed-outline" 
             title="Койки"
-            base-color="var(--color-default)"
+            base-color="var(--color-drawer)"
             value="beds">
                 <template v-slot:append>
                     <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>
@@ -78,6 +78,7 @@ const rail = ref(true)
 .navigation-drawer {
     height: 93% !important;
     background-color: var(--bg-color-op-blue);
+    backdrop-filter: blur(8px);
     margin-top: auto;
     border-right: var(--border-thin);
 }
