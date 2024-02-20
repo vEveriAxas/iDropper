@@ -1,24 +1,62 @@
 <template>
     <!-- Компонент для отрисовки Больницы, Отделений, Палат и Коек -->
-    <div class="items-list__container">
+    <div class="items-list__container" :style="{width: widthListComp}">
         <div class="items-list__header">
             <h1 class="items-list__header--title">Доступные {{ props.mainTitle }}</h1>
         </div>
 
         <!-- Отрисовка элементов -->
         <div class="items-list__wrapper">
-            <itemComp class="wrapper-item" v-for="(item, index) in 25"  :key="index"></itemComp>
+            <itemComp 
+            class="wrapper-item" v-for="(item, index) in 25"  
+            @select-item="(id) => selectItem(id)"
+            :item-data="{id: index}"
+            :key="index"
+            ></itemComp>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import itemComp from './itemComp.vue';
-import { defineProps } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+import { ref, defineProps, onMounted, defineEmits } from 'vue';
+import gsap from 'gsap';
 
+const route = useRoute();
+const router = useRouter();
+
+// EMITS
+const emit = defineEmits<{
+    selectItem: [];
+}>();
+// PROPS
 const props = defineProps<{
     mainTitle: string,
 }>();
+
+// ============   DATA ==============
+const widthListComp = ref('95%');  // Ширина для items-list__container
+
+
+// ============   METHODS   ============
+function selectItem(id: number) {
+    router.push({query: {select: id}});
+    // widthListComp.value = '35%';
+    gsap.to('.items-list__container', {width: '35%', duration: 0.4})
+        .then(() => {
+            emit('selectItem');
+        });   
+}
+
+// ============   LIFECYCLE HOOKS   ============
+onMounted(() => {
+    // Если выбран како-либо элемент (запись в query параметры) при перезагрузке страницы то сохранаяем ширину 35%
+    if(route.query.select) {
+        widthListComp.value = '35%';
+    }
+})
+
 </script>
 
 <style scoped>
@@ -28,6 +66,7 @@ const props = defineProps<{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 0 auto 0 2rem;
     width: 95%;
     height: 95%;
     background-color: var(--bg-color-white);

@@ -17,16 +17,12 @@
 <script setup lang="ts">
 import drawerPanelComp from '../components/navigationDrawer/drawerPanelComp';
 import filterPanelComp from '../components/filterPanel/filterPanelComp.vue';
-import { ref, watch, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
 const drawerWidth = ref(350);
 
-watch(() => route.fullPath, (to, from) => {
-    console.log('TO',to);
-    console.log('FROM',from);
-});
 
 onMounted(() => {
     console.log(route.meta.title);
