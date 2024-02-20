@@ -8,11 +8,7 @@
 
             <!-- Контент Блок -->
             <div class="main__content-block">
-                <router-view v-slot="{ Component }">
-                    <transition name="slide-left">
-                        <component :is="Component" />
-                    </transition>
-                </router-view>
+                <router-view></router-view>
             </div>
         </div>
     </div>

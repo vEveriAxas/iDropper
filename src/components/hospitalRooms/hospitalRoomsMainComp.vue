@@ -1,7 +1,7 @@
 <template>
     <!-- Главный Блок для взаимодействия с ПАЛАТАМИ -->
     <div class="hospital-rooms-main">
-        <itemsListComp/>
+        <itemsListComp :main-title="'палаты'"/>
     </div>
 </template>
 

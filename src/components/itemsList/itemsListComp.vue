@@ -2,18 +2,23 @@
     <!-- Компонент для отрисовки Больницы, Отделений, Палат и Коек -->
     <div class="items-list__container">
         <div class="items-list__header">
-            <h1 class="items-list__header--title">Доступные {{  }}</h1>
+            <h1 class="items-list__header--title">Доступные {{ props.mainTitle }}</h1>
         </div>
 
         <!-- Отрисовка элементов -->
         <div class="items-list__wrapper">
-            <itemComp class="wrapper-item" v-for="(item, index) in 100"  :key="index"></itemComp>
+            <itemComp class="wrapper-item" v-for="(item, index) in 25"  :key="index"></itemComp>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
 import itemComp from './itemComp.vue';
+import { defineProps } from 'vue';
+
+const props = defineProps<{
+    mainTitle: string,
+}>();
 </script>
 
 <style scoped>

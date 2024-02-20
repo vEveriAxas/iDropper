@@ -1,7 +1,7 @@
 <template>
     <!-- Главный Блок для взаимодействия с ОТДЕЛЕНИЯМИ -->
     <div class="departments-main">
-        <itemsListComp/>
+        <itemsListComp :main-title="'отделения'"/>
     </div>
 </template>
 

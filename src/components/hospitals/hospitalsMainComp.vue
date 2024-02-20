@@ -1,7 +1,7 @@
 <template>
     <!-- Главный Блок для взаимодействия с Больницами -->
     <div class="hospitals-main">
-        <itemsListComp/>
+        <itemsListComp :main-title="'больницы'"/>
     </div>
 </template>
 

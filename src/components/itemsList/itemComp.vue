@@ -25,13 +25,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
-
-const props = defineProps<{
-    id?: number,
-    itemName?: string,
-    itemAddress?: string,
-}>();
 
 </script>
 

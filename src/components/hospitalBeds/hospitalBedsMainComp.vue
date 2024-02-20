@@ -1,7 +1,7 @@
 <template>
     <!-- Главный Блок для взаимодействия с КОЙКАМИ -->
     <div class="hospital-beds-main">
-        <itemsListComp/>
+        <itemsListComp :main-title="'койки'"/>
     </div>
 </template>
 
