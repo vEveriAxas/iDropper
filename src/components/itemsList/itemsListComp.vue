@@ -2,8 +2,10 @@
     <!-- Компонент для отрисовки Больницы, Отделений, Палат и Коек -->
     <div class="items-list__container">
         <div class="items-list__header">
-            <h1 class="items-list__header--title">Доступные {{ route.meta.title }}</h1>
+            <h1 class="items-list__header--title">Доступные {{  }}</h1>
         </div>
+
+        <!-- Отрисовка элементов -->
         <div class="items-list__wrapper">
             <itemComp class="wrapper-item" v-for="(item, index) in 100"  :key="index"></itemComp>
         </div>
@@ -12,9 +14,6 @@
 
 <script setup lang="ts">
 import itemComp from './itemComp.vue';
-import { useRouter, useRoute } from 'vue-router';
-const router = useRouter();
-const route = useRoute();
 </script>
 
 <style scoped>
@@ -29,6 +28,7 @@ const route = useRoute();
     background-color: var(--bg-color-white);
     border-radius: 20px;
     box-shadow: var(--shadow);
+    overflow: hidden;
 }
 .items-list__header {
     position: absolute;
@@ -37,10 +37,9 @@ const route = useRoute();
     justify-content: center;
     width: 94%;
     height: max-content;
-    background-color: var(--bg-color-default);
-    color: var(--color-white);
-    border-bottom-right-radius: 15px;
-    border-bottom-left-radius: 15px;
+    background-color: var(--bg-color-white);
+    color: var(--color-default);
+    border-bottom: var(--border-thin);
     z-index: 20;
 }
 .items-list__header--title {

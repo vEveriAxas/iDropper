@@ -46,8 +46,8 @@
             prepend-icon="mdi-table-large" 
             title="Палаты"
             base-color="var(--color-drawer)"
-            @click="router.push({name: 'chambers'})"
-            value="chambers">
+            @click="router.push({name: 'hospitalRooms'})"
+            value="hospitalRooms">
                 <template v-slot:append>
                     <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>
                 </template>
@@ -58,8 +58,8 @@
             prepend-icon="mdi-bed-outline" 
             title="Койки"
             base-color="var(--color-drawer)"
-            @click="router.push({name: 'beds'})"
-            value="beds">
+            @click="router.push({name: 'hospitalBeds'})"
+            value="hospitalBeds">
                 <template v-slot:append>
                     <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>
                 </template>
