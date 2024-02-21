@@ -5,12 +5,13 @@
         <!-- Список Палат -->
         <itemsListComp 
         :main-title="'отделения'"
-        @select-item="changeContentBlock"/>
+        @select-item="(id, itemName) => changeContentBlock(id, itemName)"/>
 
         <!-- Контент Блок -->
         <contentBlockComp
         class="hospital-beds-main__content-block"
-        :show="isShowContentBlock"/>
+        :show="isShowContentBlock"
+        :content-title="currentItemName"/>
     </div>
 </template>
 
@@ -20,7 +21,11 @@ import contentBlockComp from '../contentBlock/contentBlockComp.vue';
 import contentBlockCompose from '../../composable/contentBlockCompose';
 
 // Компонуемый файл хранит переиспользуемую логику для работы contentBlock
-const { isShowContentBlock, changeContentBlock } = contentBlockCompose();
+const {
+    currentItemName,
+    isShowContentBlock, 
+    changeContentBlock 
+} = contentBlockCompose();
 </script>
 
 <style scoped>

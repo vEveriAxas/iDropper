@@ -20,43 +20,43 @@
             density="comfortable"
             color="var(--color-default)"
             elevation="2"
-            @click="openItem(props.itemData.id)"
+            @click="openItem(props.itemData.id, props.itemData.itemName)"
             >Открыть</v-btn>
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { defineEmits, defineProps, onMounted, computed } from 'vue';
+import { defineEmits, defineProps, computed } from 'vue';
 import { useRoute } from 'vue-router';
+import { IdClient, NameClient } from '../../types/generalTypes';
 
 const route = useRoute();
 const props = defineProps<{
     itemData: { 
-        id: number | string,
+        id: IdClient,
+        mainTitle: string,
+        itemName: NameClient,
     },
 }>();
 
 const emit = defineEmits<{
-    selectItem: [id: number],
+    selectItem: [id: IdClient, itemTitle: NameClient],
 }>();
 
+// Вычисление bg цвета для элемента списка при его выборе
 const computedBackgroundColor = computed(() => {
     if(props.itemData.id == route.query.select) {
         return { backgroundColor: 'var(--bg-color-gray)' }
     } else {
         return {}
     }
-})
-
-// Функция триггерит открытие элемента
-function openItem(id: number): void {
-    emit('selectItem', id);
-}
-
-onMounted(() => {
-    props.itemData.id !== route.query.select
 });
+
+// Функция триггерит выбор элемента списка и проявление контентного блока
+function openItem(id: IdClient, itemTitle: NameClient): void {
+    emit('selectItem', id, itemTitle);
+}
 
 </script>
 

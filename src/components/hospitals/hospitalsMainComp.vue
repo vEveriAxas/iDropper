@@ -5,11 +5,12 @@
         <!-- Список Палат -->
         <itemsListComp 
         :main-title="'больницы'"
-        @select-item="changeContentBlock"/>
+        @select-item="(id, itemName) => changeContentBlock(id, itemName)"/>
     
         <!-- Контент Блок -->
         <contentBlockComp
         class="hospital-beds-main__content-block"
+        :content-title="currentItemName"
         :show="isShowContentBlock"/>
     </div>
 </template>
@@ -22,7 +23,11 @@ import contentBlockCompose from '../../composable/contentBlockCompose';
 import { getAllHospitalDB } from '../../api/hospitalApi';
 
 // Компонуемый файл хранит переиспользуемую логику для работы contentBlock
-const { isShowContentBlock, changeContentBlock } = contentBlockCompose();
+const { 
+    currentItemName,
+    isShowContentBlock, 
+    changeContentBlock 
+} = contentBlockCompose();
 
 onMounted(async () => {
     console.log(await getAllHospitalDB());

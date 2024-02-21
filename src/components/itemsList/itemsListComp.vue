@@ -9,8 +9,8 @@
         <div class="items-list__wrapper">
             <itemComp 
             class="wrapper-item" v-for="(item, index) in 25"  
-            @select-item="(id) => selectItem(id)"
-            :item-data="{id: index}"
+            @select-item="(id, itemName) => selectItem(id, itemName)"
+            :item-data="{id: index, mainTitle: props.mainTitle, itemName: 'example_title'}"
             :key="index"
             ></itemComp>
         </div>
@@ -21,6 +21,7 @@
 import itemComp from './itemComp.vue';
 import { useRouter, useRoute } from 'vue-router';
 import { ref, defineProps, onMounted, defineEmits } from 'vue';
+import { IdClient, NameClient } from '../../types/generalTypes';
 import gsap from 'gsap';
 
 const route = useRoute();
@@ -28,7 +29,7 @@ const router = useRouter();
 
 // EMITS
 const emit = defineEmits<{
-    selectItem: [];
+    selectItem: [id: IdClient, itemName: NameClient];
 }>();
 // PROPS
 const props = defineProps<{
@@ -40,11 +41,12 @@ const widthListComp = ref('95%');  // Ширина для items-list__container
 
 
 // ============   METHODS   ============
-function selectItem(id: number) {
-    router.push({query: {select: id}});
+// Функция триггерит выбор элемента списка и проявление контентного блока
+function selectItem(id: IdClient, itemName: NameClient) {
+    router.push({query: { select: id }});
     gsap.to('.items-list__container', {width: '35%', duration: 0.4})
         .then(() => {
-            emit('selectItem');
+            emit('selectItem', id, itemName);
         });   
 }
 
