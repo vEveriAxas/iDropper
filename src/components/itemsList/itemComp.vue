@@ -64,6 +64,7 @@ function openItem(id: IdClient, itemTitle: NameClient): void {
 .item-comp {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     height: 140px;
     width: 100%;
     margin-bottom: .5rem;
@@ -74,12 +75,13 @@ function openItem(id: IdClient, itemTitle: NameClient): void {
 
 }
 .item-comp__data {
-    width: 80%;
+    width: 70%;
     /* border: var(--border); */
     padding: 0 1.5rem 0 0;
-    flex-grow: 4;
+    flex-grow: 2;
 }
 .item-comp__actions {
+    width: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
