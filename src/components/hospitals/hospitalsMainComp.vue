@@ -17,10 +17,12 @@
 </template>
 
 <script setup lang="ts">
-import itemsListComp from '../itemsList/itemsListComp.vue';
-import contentBlockComp from '../contentBlock/contentBlockComp.vue';
 import { ref, onMounted } from 'vue';
 import contentBlockCompose from '../../composable/contentBlockCompose';
+// COMPONENTS
+import itemsListComp from '../itemsList/itemsListComp.vue';
+import contentBlockComp from '../contentBlock/contentBlockComp.vue';
+// API
 import { getAllHospitalDB } from '../../api/hospitalsApi';
 // TYPES
 import { HospitalClient } from '../../types/hospitalType'; 

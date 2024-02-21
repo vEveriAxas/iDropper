@@ -17,10 +17,12 @@
 </template>
 
 <script setup lang="ts">
-import itemsListComp from '../itemsList/itemsListComp.vue';
-import contentBlockComp from '../contentBlock/contentBlockComp.vue';
 import contentBlockCompose from '../../composable/contentBlockCompose';
 import { ref, onMounted } from 'vue';
+// COMPONENTS
+import itemsListComp from '../itemsList/itemsListComp.vue';
+import contentBlockComp from '../contentBlock/contentBlockComp.vue';
+// API
 import { getAllHospitalRoomsDB } from '../../api/hospitalRoomsApi';
 // TYPES
 import { ArrayHospitalRoomClient } from '../../types/hospitalRoomType'; 
