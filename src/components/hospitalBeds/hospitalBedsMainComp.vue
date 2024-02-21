@@ -52,6 +52,7 @@ onMounted(async () => {
 
 <style scoped>
 .hospital-beds-main {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-evenly;

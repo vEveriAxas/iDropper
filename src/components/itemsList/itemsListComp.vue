@@ -1,6 +1,6 @@
 <template>
     <!-- Компонент для отрисовки Больницы, Отделений, Палат и Коек -->
-    <div class="items-list__container" :style="{width: widthListComp}">
+    <div class="items-list__container" :style="{width: widthListComp, left: leftPosition }">
         <div class="items-list__header">
             <h1 class="items-list__header--title">Доступные {{ props.mainTitle }}</h1>
         </div>
@@ -49,13 +49,14 @@ const props = defineProps<{
 
 // ============   DATA   ==============
 const widthListComp = ref('95%');  // Ширина для items-list__container
+const leftPosition = ref('1.5%');  // Ширина для items-list__container
 
 
 // ============   METHODS   ============
 // Функция триггерит выбор элемента списка и проявление контентного блока
 function selectItem(id: IdClient, itemName: NameClient) {
     router.push({query: { select: id }});
-    gsap.to('.items-list__container', {width: '35%', duration: 0.4})
+    gsap.to('.items-list__container', {width: '35%', left: '1.5%', duration: 0.4})
         .then(() => {
             emit('selectItem', id, itemName);
         });   
@@ -66,6 +67,9 @@ onMounted(() => {
     // Если выбран како-либо элемент (запись в query параметры) при перезагрузке страницы то сохранаяем ширину 35%
     if(route.query.select) {
         widthListComp.value = '35%';
+    } else {
+        // По умолчанию убираем смещение от края 1.5% если никакого элемента не выбрано
+        leftPosition.value = '';
     }
 })
 
@@ -73,13 +77,13 @@ onMounted(() => {
 
 <style scoped>
 .items-list__container {
-    position: relative;
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 0 2rem;
     width: 95%;
+    /* width: 35% !important; */
     height: 95%;
     background-color: var(--bg-color-white);
     border-radius: 20px;

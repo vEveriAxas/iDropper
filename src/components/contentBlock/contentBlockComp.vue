@@ -30,14 +30,15 @@ const props = defineProps<{
 <style scoped>
 
 .content-block {
-    position: relative;
+    position: absolute;
+    right: 1.5%;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: var(--bg-color-white);
-    width: 60%;
+    width: 61%;
     height: 95%;
-    margin-right: 2rem;
+    margin-left: 1.5rem;
     border-radius: 20px;
     box-shadow: var(--shadow);
     scale: 0;
