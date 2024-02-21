@@ -42,7 +42,6 @@ const widthListComp = ref('95%');  // Ширина для items-list__container
 // ============   METHODS   ============
 function selectItem(id: number) {
     router.push({query: {select: id}});
-    // widthListComp.value = '35%';
     gsap.to('.items-list__container', {width: '35%', duration: 0.4})
         .then(() => {
             emit('selectItem');

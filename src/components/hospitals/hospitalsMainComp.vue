@@ -1,20 +1,30 @@
 <template>
     <!-- Главный Блок для взаимодействия с Больницами -->
     <div class="hospitals-main">
-        <itemsListComp :main-title="'больницы'"/>
+
+        <!-- Список Палат -->
+        <itemsListComp 
+        :main-title="'больницы'"
+        @select-item="changeContentBlock"/>
+    
+        <!-- Контент Блок -->
+        <contentBlockComp
+        class="hospital-beds-main__content-block"
+        :show="isShowContentBlock"/>
     </div>
 </template>
 
 <script setup lang="ts">
 import itemsListComp from '../itemsList/itemsListComp.vue';
+import contentBlockComp from '../contentBlock/contentBlockComp.vue';
 import { onMounted } from 'vue';
+import contentBlockCompose from '../../composable/contentBlockCompose';
 import { getAllHospitalDB } from '../../api/hospitalApi';
-import { useRoute } from 'vue-router';
 
-const route = useRoute();
+// Компонуемый файл хранит переиспользуемую логику для работы contentBlock
+const { isShowContentBlock, changeContentBlock } = contentBlockCompose();
 
 onMounted(async () => {
-    console.log(route.meta.title === 'койки');
     console.log(await getAllHospitalDB());
 });
 </script>

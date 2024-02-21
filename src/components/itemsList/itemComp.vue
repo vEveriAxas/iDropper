@@ -49,7 +49,7 @@ const computedBackgroundColor = computed(() => {
     }
 })
 
-// Функция для открытия элемента
+// Функция триггерит открытие элемента
 function openItem(id: number): void {
     emit('selectItem', id);
 }
