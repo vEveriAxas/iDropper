@@ -2,7 +2,7 @@ import gsap from 'gsap';
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
-// Компонуемый файл хранит переиспользуемую логику для работы contentBlockComp компонентом
+// Компонуемый файл хранит переиспользуемую логику для работы contentBlockComp компонента
 function useContentBlock() {
     const route = useRoute();
 

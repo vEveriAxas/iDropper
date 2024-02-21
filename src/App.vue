@@ -20,7 +20,7 @@ onMounted(() => {
         if (routePath[1] === 'main') {
             isShowUserActions.value = true;
         }
-    });
+    }, 0);
 });
 
 </script>
