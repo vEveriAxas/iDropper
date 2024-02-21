@@ -1,7 +1,18 @@
 <template>
     <div v-show="props.show" class="content-block">
         <div class="items-list__header">
-            <h1 class="items-list__header--title">{{  props.contentTitle ?? 'item_name' }}</h1>
+            <!-- Заголовок контент блока -->
+            <h1 v-if="props.contentTitle" class="items-list__header--title">{{ props.contentTitle }}</h1>
+
+            <!-- Крутилка загрузки -->
+            <v-progress-circular 
+            v-else 
+            indeterminate
+            bg-color="var(--bg-color-white)"
+            color="var(--bg-color-default)"
+            :size="20" 
+            :width="2"
+            ></v-progress-circular>
         </div>
     </div>
 </template>
@@ -39,6 +50,7 @@ const props = defineProps<{
     justify-content: center;
     width: 94%;
     height: max-content;
+    padding: 0.2rem;
     background-color: var(--bg-color-white);
     color: var(--color-default);
     border-bottom: var(--border-thin);

@@ -6,7 +6,7 @@
         </div>
 
         <!-- Отрисовка элементов -->
-        <div class="items-list__wrapper">
+        <div v-if="!!props.items.length" class="items-list__wrapper">
             <itemComp 
             class="wrapper-item" v-for="(item, index) in props.items"  
             @select-item="(id, itemName) => selectItem(id, itemName)"
@@ -14,6 +14,16 @@
             :key="index"
             ></itemComp>
         </div>
+
+        <!-- Крутилка загрузки -->
+        <v-progress-circular 
+        v-else 
+        indeterminate
+        bg-color="var(--bg-color-white)"
+        color="var(--bg-color-default)"
+        :size="60" 
+        :width="6"
+        ></v-progress-circular>
     </div>
 </template>
 

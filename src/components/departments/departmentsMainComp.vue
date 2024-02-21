@@ -36,7 +36,7 @@ const {
 } = contentBlockCompose();
 
 // Полученный с БД массив данных
-const departments = ref<ArrayDepartmentClient>();
+const departments = ref<ArrayDepartmentClient>([]);
 
 // Получение массива ОТДЕЛЕНИЙ с БД
 onMounted(async() => {
