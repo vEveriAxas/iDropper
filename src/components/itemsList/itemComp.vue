@@ -4,10 +4,10 @@
         <div class="item-comp__data">
             <!-- Заголовок элемента -->
             <h3 class="item-comp__data--title">
-                props_data: _value
+                {{ props.itemData.name }}
             </h3>
             <!-- Подзаголовок элемента -->
-            <p class="item-comp__data--description">props_subtitle</p>
+            <p class="item-comp__data--description">{{ props.itemData.address }}</p>
         </div>
 
         <!-- Блок взаимодействия с элементом -->
@@ -20,7 +20,7 @@
             density="comfortable"
             color="var(--color-default)"
             elevation="2"
-            @click="openItem(props.itemData.id, props.itemData.itemName)"
+            @click="openItem(props.itemData.id, props.itemData.name)"
             >Открыть</v-btn>
         </div>
     </div>
@@ -29,14 +29,14 @@
 <script setup lang="ts">
 import { defineEmits, defineProps, computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { IdClient, NameClient } from '../../types/generalTypes';
+import { IdClient, NameClient, AddressClient } from '../../types/generalTypes';
 
 const route = useRoute();
 const props = defineProps<{
-    itemData: { 
+    itemData: {
         id: IdClient,
-        mainTitle: string,
-        itemName: NameClient,
+        name: NameClient,
+        address?: AddressClient,
     },
 }>();
 

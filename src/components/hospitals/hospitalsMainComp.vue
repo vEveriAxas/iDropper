@@ -31,7 +31,8 @@ import { HospitalClient } from '../../types/hospitalType';
 const { 
     currentItemName,
     isShowContentBlock, 
-    changeContentBlock 
+    changeContentBlock,
+    saveTitleContentBlock,
 } = contentBlockCompose();
 
 // Полученный с БД массив данных
@@ -41,6 +42,7 @@ const hospitals = ref<Array<HospitalClient> | []>([]);
 onMounted(async () => {
     try {
         hospitals.value = await getAllHospitalDB();
+        saveTitleContentBlock(hospitals.value);
     } catch (err) {
         throw new Error(`components/departments/departmentsMainComp: onMounted  => ${err}`);
     }

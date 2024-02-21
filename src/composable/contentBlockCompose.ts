@@ -14,10 +14,27 @@ function useContentBlock() {
     // Проявление контент блока по нажатию на item в списке items
     function changeContentBlock(id: IdClient, itemName: NameClient): void {
         currentItemID.value = id;
-        currentItemName.value = `${itemName} ${id}`; // !!! ${id} Только для ТЕСТА!!!
+        currentItemName.value = itemName;
         isShowContentBlock.value = true;
         const contentBlock = document.querySelector('.hospital-beds-main__content-block') as HTMLDivElement;
         gsap.to(contentBlock, { scale: 1, duration: 0.5 });
+    }
+
+    // На основе query параметра вычисляет название элемента который был открыт до перемонтирования компонента
+    function saveTitleContentBlock(itemsArray: Array<any>) {
+        try {
+            if(route.query.select) {
+                itemsArray.forEach((item) => {
+                    // В случае соответствия элемента массива query параметру, снова записываем данные элемента 
+                    if(item.id == route.query.select) {
+                        currentItemName.value = item?.name;
+                        currentItemID.value = item?.id;
+                    }
+                });
+            }
+        } catch (err) {
+            throw new Error(`composable/contentBlockCompose: saveTitleContentBlock  => ${err}`);
+        }
     }
 
     // Проверяется выбран ли query параметр элемента при монтировании компонента
@@ -34,6 +51,7 @@ function useContentBlock() {
         currentItemID,
         isShowContentBlock,
         changeContentBlock,
+        saveTitleContentBlock,
     }
 }
 

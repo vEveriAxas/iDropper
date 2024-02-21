@@ -10,7 +10,7 @@
             <itemComp 
             class="wrapper-item" v-for="(item, index) in props.items"  
             @select-item="(id, itemName) => selectItem(id, itemName)"
-            :item-data="{id: index, mainTitle: props.mainTitle, itemName: 'example_title'}"
+            :item-data="{id: item?.id, name: item?.name, address: item?.address}"
             :key="index"
             ></itemComp>
         </div>

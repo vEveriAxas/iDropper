@@ -31,7 +31,8 @@ import { ArrayDepartmentClient } from '../../types/departmentType';
 const {
     currentItemName,
     isShowContentBlock, 
-    changeContentBlock 
+    changeContentBlock,
+    saveTitleContentBlock,
 } = contentBlockCompose();
 
 // Полученный с БД массив данных
@@ -41,6 +42,7 @@ const departments = ref<ArrayDepartmentClient>();
 onMounted(async() => {
     try {
         departments.value = await getAllDepartmentsDB();
+        saveTitleContentBlock(departments.value);
     } catch (err) {
         throw new Error(`components/departments/departmentsMainComp: onMounted  => ${err}`);
     }
