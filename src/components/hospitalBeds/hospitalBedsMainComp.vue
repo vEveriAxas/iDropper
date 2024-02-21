@@ -4,7 +4,8 @@
 
         <!-- Список Коек -->
         <itemsListComp 
-        :main-title="'койки'" 
+        :main-title="'койки'"
+        :items="hospitalBeds"
         @select-item="changeContentBlock"/>
 
         <!-- Контент Блок -->
@@ -19,6 +20,10 @@
 import itemsListComp from '../itemsList/itemsListComp.vue';
 import contentBlockComp from '../contentBlock/contentBlockComp.vue';
 import contentBlockCompose from '../../composable/contentBlockCompose';
+import { ref, onMounted } from 'vue';
+import { getAllHospitalBedsDB } from '../../api/hospitalBedsApi';
+// TYPES
+import { ArrayHospitalBedClient } from '../../types/hospitalBedType'; 
 
 // Компонуемый файл хранит переиспользуемую логику для работы contentBlock
 const { 
@@ -26,6 +31,18 @@ const {
     isShowContentBlock, 
     changeContentBlock 
 } = contentBlockCompose();
+
+const hospitalBeds = ref<ArrayHospitalBedClient>([]);
+
+// Получение массива КОЕК с БД
+onMounted(async () => {
+    try {
+        hospitalBeds.value = await getAllHospitalBedsDB();
+    } catch (err) {
+        throw new Error(`components/hospitalBeds/hospitalBedsMainComp: onMounted  => ${err}`);
+    }
+});
+
 </script>
 
 <style scoped>

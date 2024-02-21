@@ -19,7 +19,13 @@ interface UserClient {
     lastActivity: string | null;
 }
 
+// Массив может быть либо пустым, либо с объектами
+type ArrayUserServer = Array<UserServer> | [];
+type ArrayUserClient = Array<UserClient> | [];
+
 export {
     UserServer,
     UserClient,
+    ArrayUserServer,
+    ArrayUserClient,
 }

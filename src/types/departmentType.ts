@@ -14,7 +14,13 @@ interface DepartmentClient {
     hospitalID: number | null;
 }
 
+// Массив может быть либо пустым, либо с объектами
+type ArrayDepartmentClient = Array<DepartmentClient> | [];
+type ArrayDepartmentServer = Array<DepartmentServer> | [];
+
 export {
     DepartmentServer,
     DepartmentClient,
+    ArrayDepartmentClient,
+    ArrayDepartmentServer,
 }

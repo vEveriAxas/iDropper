@@ -5,6 +5,7 @@
         <!-- Список Палат -->
         <itemsListComp 
         :main-title="'отделения'"
+        :items="departments"
         @select-item="(id, itemName) => changeContentBlock(id, itemName)"/>
 
         <!-- Контент Блок -->
@@ -19,6 +20,10 @@
 import itemsListComp from '../itemsList/itemsListComp.vue';
 import contentBlockComp from '../contentBlock/contentBlockComp.vue';
 import contentBlockCompose from '../../composable/contentBlockCompose';
+import { ref, onMounted } from 'vue';
+import { getAllDepartmentsDB } from '../../api/departmentsApi';
+// TYPES
+import { ArrayDepartmentClient } from '../../types/departmentType'; 
 
 // Компонуемый файл хранит переиспользуемую логику для работы contentBlock
 const {
@@ -26,6 +31,18 @@ const {
     isShowContentBlock, 
     changeContentBlock 
 } = contentBlockCompose();
+
+const departments = ref<ArrayDepartmentClient>();
+
+// Получение массива ОТДЕЛЕНИЙ с БД
+onMounted(async() => {
+    try {
+        departments.value = await getAllDepartmentsDB();
+    } catch (err) {
+        throw new Error(`components/departments/departmentsMainComp: onMounted  => ${err}`);
+    }
+});
+
 </script>
 
 <style scoped>

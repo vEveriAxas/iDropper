@@ -16,7 +16,13 @@ interface HospitalClient {
     chiefID: number | string;
 }
 
+// Массив может быть либо пустым, либо с объектами
+type ArrayHospitalServer = Array<HospitalServer> | [];
+type ArrayHospitalClient = Array<HospitalClient> | [];
+
 export {
     HospitalServer,
     HospitalClient,
+    ArrayHospitalServer,
+    ArrayHospitalClient,
 }

@@ -46,7 +46,7 @@ const props = defineProps<{
 }
 .items-list__header--title {
     font-family: var(--font);
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: normal;
 }
 </style>

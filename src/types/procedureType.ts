@@ -33,7 +33,13 @@ interface ProcedureClient {
     actualDuration: number | string | null;  
 }
 
+// Массив может быть либо пустым, либо с объектами
+type ArrayProcedureServer = Array<ProcedureServer> | [];
+type ArrayProcedureClient = Array<ProcedureClient> | [];
+
 export {
     ProcedureServer,
     ProcedureClient,
+    ArrayProcedureServer,
+    ArrayProcedureClient,
 }

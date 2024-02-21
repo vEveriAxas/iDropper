@@ -8,7 +8,7 @@
         <!-- Отрисовка элементов -->
         <div class="items-list__wrapper">
             <itemComp 
-            class="wrapper-item" v-for="(item, index) in 25"  
+            class="wrapper-item" v-for="(item, index) in props.items"  
             @select-item="(id, itemName) => selectItem(id, itemName)"
             :item-data="{id: index, mainTitle: props.mainTitle, itemName: 'example_title'}"
             :key="index"
@@ -34,9 +34,10 @@ const emit = defineEmits<{
 // PROPS
 const props = defineProps<{
     mainTitle: string,
+    items: Array<any>,
 }>();
 
-// ============   DATA ==============
+// ============   DATA   ==============
 const widthListComp = ref('95%');  // Ширина для items-list__container
 
 

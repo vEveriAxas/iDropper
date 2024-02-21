@@ -5,6 +5,7 @@
         <!-- Список Палат -->
         <itemsListComp 
         :main-title="'больницы'"
+        :items="hospitals"
         @select-item="(id, itemName) => changeContentBlock(id, itemName)"/>
     
         <!-- Контент Блок -->
@@ -18,9 +19,11 @@
 <script setup lang="ts">
 import itemsListComp from '../itemsList/itemsListComp.vue';
 import contentBlockComp from '../contentBlock/contentBlockComp.vue';
-import { onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 import contentBlockCompose from '../../composable/contentBlockCompose';
-import { getAllHospitalDB } from '../../api/hospitalApi';
+import { getAllHospitalDB } from '../../api/hospitalsApi';
+// TYPES
+import { HospitalClient } from '../../types/hospitalType'; 
 
 // Компонуемый файл хранит переиспользуемую логику для работы contentBlock
 const { 
@@ -29,9 +32,17 @@ const {
     changeContentBlock 
 } = contentBlockCompose();
 
+const hospitals = ref<Array<HospitalClient> | []>([]);
+
+// Получение массива БОЛЬНИЦ с БД
 onMounted(async () => {
-    console.log(await getAllHospitalDB());
+    try {
+        hospitals.value = await getAllHospitalDB();
+    } catch (err) {
+        throw new Error(`components/departments/departmentsMainComp: onMounted  => ${err}`);
+    }
 });
+
 </script>
 
 <style scoped>

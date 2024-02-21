@@ -25,7 +25,13 @@ interface PatientClient {
     hospitalBedID: number | null;
 }
 
+// Массив может быть либо пустым, либо с объектами
+type ArrayPatientServer = Array<PatientServer> | [];
+type ArrayPatientClient = Array<PatientClient> | [];
+
 export {
     PatientServer,
     PatientClient,
+    ArrayPatientServer,
+    ArrayPatientClient,
 }

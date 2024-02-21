@@ -5,6 +5,7 @@
         <!-- Список Палат -->
         <itemsListComp 
         :main-title="'палаты'"
+        :items="hospitalRooms"
         @select-item="changeContentBlock"/>
 
         <!-- Контент Блок -->
@@ -19,6 +20,10 @@
 import itemsListComp from '../itemsList/itemsListComp.vue';
 import contentBlockComp from '../contentBlock/contentBlockComp.vue';
 import contentBlockCompose from '../../composable/contentBlockCompose';
+import { ref, onMounted } from 'vue';
+import { getAllHospitalRoomsDB } from '../../api/hospitalRoomsApi';
+// TYPES
+import { ArrayHospitalRoomClient } from '../../types/hospitalRoomType'; 
 
 // Компонуемый файл хранит переиспользуемую логику для работы contentBlock
 const { 
@@ -26,6 +31,18 @@ const {
     isShowContentBlock, 
     changeContentBlock 
 } = contentBlockCompose();
+
+const hospitalRooms = ref<ArrayHospitalRoomClient>([]);
+
+// Получение массива ПАЛАТ с БД
+onMounted(async () => {
+    try {
+        hospitalRooms.value = await getAllHospitalRoomsDB();
+    } catch (err) {
+        throw new Error(`components/hospitalRooms/hospitalRoomsMainComp: onMounted  => ${err}`);
+    }
+});
+
 </script>
 
 <style scoped>

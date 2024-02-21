@@ -1,6 +1,4 @@
 
-
-
 // Объект данных Койки(Больницы) пришедшего с сервера
 interface HospitalBedServer {
     id: number | string;
@@ -21,7 +19,14 @@ interface HospitalBedClient {
     patientID: number | null;
 }
 
+// Массив может быть либо пустым, либо с объектами
+type ArrayHospitalBedServer = Array<HospitalBedServer> | [];
+type ArrayHospitalBedClient = Array<HospitalBedClient> | [];
+
+
 export {
     HospitalBedServer,
     HospitalBedClient,
+    ArrayHospitalBedServer,
+    ArrayHospitalBedClient
 }

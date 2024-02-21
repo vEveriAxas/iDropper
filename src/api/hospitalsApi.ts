@@ -1,13 +1,13 @@
 // Взаимодействие с Больницами
-import { HospitalServer, HospitalClient } from '@/types/hospitalType';
+import { ArrayHospitalClient, ArrayHospitalServer } from '@/types/hospitalType';
 import { convertKeysToCamelCase } from '../utils/index';
 import hospitals from '../testData/hospitalsData.js';
 
 // Получение больниц с сервера
-async function getAllHospitalDB(): Promise<Array<HospitalClient>> {
+async function getAllHospitalDB(): Promise<ArrayHospitalClient> {
     try {
         // Получение данных с сервера
-        const promise: Promise<Array<HospitalServer>> = new Promise((resovle, reject) => {
+        const promise: Promise<ArrayHospitalServer> = new Promise((resovle, reject) => {
             setTimeout(() => {
                 resovle(hospitals);
             }, 500);
@@ -16,7 +16,7 @@ async function getAllHospitalDB(): Promise<Array<HospitalClient>> {
         // Форматировение ключей объекта с snake_case в CamelCase
         return convertKeysToCamelCase(response);
     } catch (err) {
-        throw new Error(`api/hospitalApi: getAllHospitalDB  => ${err}`)
+        throw new Error(`api/hospitalsApi: getAllHospitalDB  => ${err}`)
     }
 }
 
