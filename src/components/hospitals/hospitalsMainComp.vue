@@ -34,6 +34,7 @@ const {
     changeContentBlock 
 } = contentBlockCompose();
 
+// Полученный с БД массив данных
 const hospitals = ref<Array<HospitalClient> | []>([]);
 
 // Получение массива БОЛЬНИЦ с БД

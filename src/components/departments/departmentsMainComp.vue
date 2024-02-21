@@ -34,6 +34,7 @@ const {
     changeContentBlock 
 } = contentBlockCompose();
 
+// Полученный с БД массив данных
 const departments = ref<ArrayDepartmentClient>();
 
 // Получение массива ОТДЕЛЕНИЙ с БД

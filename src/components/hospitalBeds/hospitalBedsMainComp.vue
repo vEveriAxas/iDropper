@@ -34,6 +34,7 @@ const {
     changeContentBlock 
 } = contentBlockCompose();
 
+// Полученный с БД массив данных
 const hospitalBeds = ref<ArrayHospitalBedClient>([]);
 
 // Получение массива КОЕК с БД
