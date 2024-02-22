@@ -4,6 +4,7 @@
         <v-text-field
         class="input-block__search-input"
         bg-color="var(--bg-color-white)"
+        v-model="value"
         color="var(--color-default)"
         rounded="lg"
         density="comfortable"
@@ -24,6 +25,10 @@
 </template>
 
 <script setup lang="ts">
+import { defineModel } from 'vue';
+
+// =================  V-MODEL  ===================
+const value = defineModel<string>('value')
 
 </script>
 
@@ -31,7 +36,7 @@
 .search-block {
     display: flex;
     align-items: center;
-    width: 40%;
+    width: 30%;
     padding: 5px;
 }
 

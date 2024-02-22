@@ -41,9 +41,8 @@ onMounted(() => {
 }
 
 .main__content-wrapper {
-    width: 85%;
+    width: 100%;
     height: 100%;
-    padding: 1.2rem 1em;
 }
 
 .main__content-block {
@@ -51,11 +50,8 @@ onMounted(() => {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 88%;
+    height: 90%;
     overflow: hidden;
-    margin-top: 1rem;
-    border-radius: 20px;
     background-color: var(--bg-color-op-blue);
-    box-shadow: var(--shadow);
 }
 </style>

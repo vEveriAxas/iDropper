@@ -7,7 +7,7 @@ import hospitals from '../testData/hospitalsData.js';
 async function getAllHospitalDB(): Promise<ArrayHospitalClient> {
     try {
         // Получение данных с сервера
-        const promise: Promise<ArrayHospitalServer> = new Promise((resovle, reject) => {
+        const promise: Promise<ArrayHospitalServer> = new Promise((resovle) => {
             setTimeout(() => {
                 resovle(hospitals);
             }, 500);

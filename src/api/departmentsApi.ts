@@ -7,7 +7,7 @@ import departments from '../testData/departmentsData.js';
 async function getAllDepartmentsDB(): Promise<ArrayDepartmentClient> {
     try {
         // Получение данных с сервера
-        const promise: Promise<ArrayDepartmentServer> = new Promise((resovle, reject) => {
+        const promise: Promise<ArrayDepartmentServer> = new Promise((resovle) => {
             setTimeout(() => {
                 resovle(departments);
             }, 500);

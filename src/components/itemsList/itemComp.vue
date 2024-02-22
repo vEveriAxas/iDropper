@@ -11,7 +11,7 @@
         </div>
 
         <!-- Блок взаимодействия с элементом -->
-        <div class="item-comp__actions">
+        <!-- <div class="item-comp__actions">
             <v-btn
             v-show="props.itemData.id != route.query.select"
             style="font-size: .85rem;"
@@ -22,7 +22,7 @@
             elevation="2"
             @click="openItem(props.itemData.id, props.itemData.name)"
             >Открыть</v-btn>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -65,12 +65,12 @@ function openItem(id: IdClient, itemTitle: NameClient): void {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 140px;
+    height: 90px;
     width: 100%;
-    margin-bottom: .5rem;
-    border: var(--border-thin);
-    border-radius: 10px;
-    box-shadow: var(--shadow);
+    /* margin-bottom: .5rem; */
+
+    /* border-radius: 10px; */
+    /* box-shadow: var(--shadow); */
     padding: 0rem 2.5rem;
 
 }
@@ -79,6 +79,19 @@ function openItem(id: IdClient, itemTitle: NameClient): void {
     /* border: var(--border); */
     padding: 0 1.5rem 0 0;
     flex-grow: 2;
+}
+.item-comp__data--title {
+    color:var(--color-default);
+    font-size: 1rem;
+}
+.item-comp__data--description {
+    height: max-content;
+    color:var(--color-gray);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 0.85rem;
+    margin: .6rem 0 0 .6rem;
 }
 .item-comp__actions {
     width: 40%;
@@ -89,15 +102,4 @@ function openItem(id: IdClient, itemTitle: NameClient): void {
     flex-grow: 1;
 }
 
-.item-comp__data--title {
-    color:var(--color-default);
-}
-.item-comp__data--description {
-    height: max-content;
-    color:var(--color-gray);
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    margin: .6rem 0 0 .6rem;
-}
 </style>
