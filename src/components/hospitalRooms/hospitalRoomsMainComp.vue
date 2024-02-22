@@ -6,34 +6,21 @@
         <itemsListComp 
         :main-title="'палаты'"
         :items="hospitalRooms"
-        @select-item="changeContentBlock"/>
+        @select-item="false"/>
 
-        <!-- Контент Блок -->
-        <contentBlockComp
-        class="hospital-beds-main__content-block"
-        :show="isShowContentBlock"
-        :content-title="currentItemName"/>
+
     </div>
 </template>
 
 <script setup lang="ts">
-import contentBlockCompose from '../../composable/contentBlockCompose';
 import { ref, onMounted } from 'vue';
 // COMPONENTS
 import itemsListComp from '../itemsList/itemsListComp.vue';
-import contentBlockComp from '../contentBlock/contentBlockComp.vue';
 // API
 import { getAllHospitalRoomsDB } from '../../api/hospitalRoomsApi';
 // TYPES
 import { ArrayHospitalRoomClient } from '../../types/hospitalRoomType'; 
 
-// Компонуемый файл хранит переиспользуемую логику для работы contentBlock
-const { 
-    currentItemName, 
-    isShowContentBlock, 
-    changeContentBlock,
-    saveTitleContentBlock,
-} = contentBlockCompose();
 
 // Полученный с БД массив данных
 const hospitalRooms = ref<ArrayHospitalRoomClient>([]);
@@ -42,7 +29,6 @@ const hospitalRooms = ref<ArrayHospitalRoomClient>([]);
 onMounted(async () => {
     try {
         hospitalRooms.value = await getAllHospitalRoomsDB();
-        saveTitleContentBlock(hospitalRooms.value);
     } catch (err) {
         throw new Error(`components/hospitalRooms/hospitalRoomsMainComp: onMounted  => ${err}`);
     }
