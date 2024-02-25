@@ -3,7 +3,7 @@
         <v-card class="dialog__wrapper">
             <form class="dialog__form">
                 <div class="dialog__form--top">
-                    <h1>Name User</h1>
+                    <h1 class="top-title">{{ (fullName)? fullName : `Пользователь ${id}` }}</h1>
                 </div>
 
                 <!-- Общие данные -->
@@ -141,6 +141,8 @@ const emit = defineEmits<{
     close: [],
 }>();
 
+const id = ref<null | string | number>('');
+const fullName = ref<string | null>('');
 const firstname = ref('');
 const lastname = ref('');
 const surname = ref('');
@@ -153,12 +155,16 @@ const repassword = ref('');
 watch(() => props.employeeData, (newValue) => {
     if(typeof newValue === 'object' && newValue !== null) {
         const words = newValue?.fullName?.split(' ');
+        fullName.value = newValue?.fullName;
         if(Array.isArray(words)) {
             if(words.length > 0) {
                 firstname.value = words[0];
                 lastname.value = words[1];
                 surname.value = words[2];
             }
+        }
+        if(newValue.id) {
+            id.value = newValue.id;
         }
         if(newValue.email) {
             email.value = newValue.email;
@@ -212,6 +218,9 @@ watch(() => props.employeeData, (newValue) => {
     background-color: var(--bg-color-op-blue);
     backdrop-filter: blur(6px);
     z-index: 90;
+}
+.top-title {
+    font-size: 1.4rem;
 }
 .data-title {
     display: flex;
