@@ -17,6 +17,19 @@
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
+            
+            <!-- СТАТИСТИКА -->
+            <v-list-item 
+            prepend-icon="mdi-poll" 
+            title="Статистика"
+            base-color="var(--color-drawer)"
+            @click="router.push({name: 'statistics'})"
+            value="statistics">
+                <template v-slot:append>
+                    <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>
+                </template>
+            </v-list-item>
+
             <!-- НАСТРОЙКИ -->
             <v-list-item 
             id="item-drawer-settings"

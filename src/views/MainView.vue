@@ -18,14 +18,14 @@
 import drawerPanelComp from '../components/navigationDrawer/drawerPanelComp';
 import filterPanelComp from '../components/filterPanel/filterPanelComp.vue';
 import { ref, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+// import { useRoute } from 'vue-router';
 
-const route = useRoute();
+// const route = useRoute();
 const drawerWidth = ref(350);
 
 
 onMounted(() => {
-    console.log(route.meta.title);
+    console.log('MainView has been mounted');
 });
 
 
