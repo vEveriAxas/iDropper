@@ -1,5 +1,5 @@
 <template>
-    <v-app>
+    <v-app class="main-container">
         <navbarComp :is-show-user-actions="isShowUserActions" /> <!-- Шапка -->
         <router-view /> <!-- Контент -->
     </v-app>
@@ -20,7 +20,7 @@ onMounted(() => {
         if (routePath[1] === 'main') {
             isShowUserActions.value = true;
         }
-    });
+    }, 0);
 });
 
 </script>
@@ -36,12 +36,14 @@ onMounted(() => {
     /* Basic style */
     --shadow: 2px 2px 6px 0 rgba(0, 0, 0, 0.3);
     --border-thin: 1px solid var(--bg-color-default);
+    --border-thin-light: 1px solid var(--bg-color-default-light);
     --border: 2px solid var(--bg-color-default);
 
     /* Background color */
     --bg-color-white: #FFFFFF;
     /* --bg-color-default: #359ABA; */
     --bg-color-default: #0ea5e9;
+    --bg-color-default-light: #0ea4e969;
     --bg-color-op-blue: rgba(12, 151, 194, 0.17);
     --bg-color-gray: #D9D9D9;
     --bg-color-scrollbar: #359bbab7;
@@ -66,6 +68,10 @@ onMounted(() => {
     height: 100vh;
     font-family: var(--font);
     overflow: hidden;
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
 }
 
 /* По умолчанию скроллбар в приложении отключен */

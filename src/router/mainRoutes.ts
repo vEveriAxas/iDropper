@@ -1,10 +1,13 @@
 import { RouteRecordRaw } from 'vue-router';
 import MainView from '@/views/MainView.vue';
-import itemsListComp from '../components/itemsList/itemsListComp.vue';
+import hospitalsMainComp from '../components/hospitals/hospitalsMainComp.vue';
+import departmentsMainComp from '../components/departments/departmentsMainComp.vue';
+import hospitalRoomsMainComp from '../components/hospitalRooms/hospitalRoomsMainComp.vue';
+import hospitalBedsMainComp from '../components/hospitalBeds/hospitalBedsMainComp.vue';
 
 export default  [
     {
-        path: '/main/:userHashID?/',
+        path: '/main/',
         name:'main',
         component: MainView,
         children: [
@@ -12,7 +15,7 @@ export default  [
             {
                 path: 'hospitals',
                 name: 'hospitals',
-                component: itemsListComp,
+                component: hospitalsMainComp,
                 meta: {
                     title: 'больницы',
                     listItemTitle: 'Больница',
@@ -22,30 +25,27 @@ export default  [
             {
                 path: 'departments',
                 name: 'departments',
-                component: itemsListComp,
+                component: departmentsMainComp,
                 meta: {
-                    title: 'отделения',
-                    listItemTitle: 'Отделение',
+                    requireAuth: true,
                 }
             },
             // ПАЛАТЫ
             {
-                path: 'chambers',
-                name: 'chambers',
-                component: itemsListComp,
+                path: 'hospital-rooms',
+                name: 'hospitalRooms',
+                component: hospitalRoomsMainComp,
                 meta: {
-                    title: 'палаты',
-                    listItemTitle: 'Палата',
+                    requireAuth: true,
                 }
             },
             // КОЙКИ
             {
-                path: 'beds',
-                name: 'beds',
-                component: itemsListComp,
+                path: 'hospital-beds',
+                name: 'hospitalBeds',
+                component: hospitalBedsMainComp,
                 meta: {
-                    title: 'койки',
-                    listItemTitle: 'Койка',
+                    requireAuth: true,
                 }
             },
         ],

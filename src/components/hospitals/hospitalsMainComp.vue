@@ -1,0 +1,47 @@
+<template>
+    <!-- Главный Блок для взаимодействия с Больницами -->
+    <div class="hospitals-main">
+
+        <!-- Список Палат -->
+        <itemsListComp 
+        :main-title="'больницы'"
+        :items="hospitals"
+        @select-item="false"/>
+    
+    </div>
+</template>
+
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
+// COMPONENTS
+import itemsListComp from '../itemsList/itemsListComp.vue';
+// API
+import { getAllHospitalDB } from '../../api/hospitalsApi';
+// TYPES
+import { HospitalClient } from '../../types/hospitalType'; 
+
+
+// Полученный с БД массив данных
+const hospitals = ref<Array<HospitalClient> | []>([]);
+
+// Получение массива БОЛЬНИЦ с БД
+onMounted(async () => {
+    try {
+        hospitals.value = await getAllHospitalDB();
+    } catch (err) {
+        throw new Error(`components/departments/departmentsMainComp: onMounted  => ${err}`);
+    }
+});
+
+</script>
+
+<style scoped>
+.hospitals-main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+</style>

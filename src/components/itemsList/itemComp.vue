@@ -1,70 +1,88 @@
 <template>
-    <div class="item-comp">
+    <div class="item-comp" :style="computedBackgroundColor">
         <!-- Блок данных элемента  -->
         <div class="item-comp__data">
             <!-- Заголовок элемента -->
             <h3 class="item-comp__data--title">
-                {{ route.meta.listItemTitle }}: 10
+                {{ props.itemData.name }}
             </h3>
             <!-- Подзаголовок элемента -->
-            <p class="item-comp__data--description">г. Краснодар, ул.Красная д.1</p>
+            <p class="item-comp__data--description">{{ props.itemData.address }}</p>
         </div>
 
         <!-- Блок взаимодействия с элементом -->
-        <div class="item-comp__actions">
+        <!-- <div class="item-comp__actions">
             <v-btn
+            v-show="props.itemData.id != route.query.select"
             style="font-size: .85rem;"
             bg-color="var(--bg-color-white)"
             variant="outlined"
             density="comfortable"
             color="var(--color-default)"
             elevation="2"
+            @click="openItem(props.itemData.id, props.itemData.name)"
             >Открыть</v-btn>
-        </div>
+        </div> -->
     </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineEmits, defineProps, computed } from 'vue';
 import { useRoute } from 'vue-router';
-const route = useRoute();
+import { IdClient, NameClient, AddressClient } from '../../types/generalTypes';
 
+const route = useRoute();
 const props = defineProps<{
-    id?: number,
-    itemName?: string,
-    itemAddress?: string,
+    itemData: {
+        id: IdClient,
+        name: NameClient,
+        address?: AddressClient,
+    },
 }>();
+
+const emit = defineEmits<{
+    selectItem: [id: IdClient, itemTitle: NameClient],
+}>();
+
+// Вычисление bg цвета для элемента списка при его выборе
+const computedBackgroundColor = computed(() => {
+    if(props.itemData.id == route.query.select) {
+        return { backgroundColor: 'var(--bg-color-gray)' }
+    } else {
+        return {}
+    }
+});
+
+// Функция триггерит выбор элемента списка и проявление контентного блока
+function openItem(id: IdClient, itemTitle: NameClient): void {
+    emit('selectItem', id, itemTitle);
+}
 
 </script>
 
 <style scoped>
 .item-comp {
     display: flex;
-    height: 140px;
+    align-items: center;
+    justify-content: space-around;
+    height: 90px;
     width: 100%;
-    margin-bottom: .5rem;
-    border: var(--border-thin);
-    border-radius: 10px;
-    box-shadow: var(--shadow);
-    padding: 2rem 2.5rem;
+    /* margin-bottom: .5rem; */
+
+    /* border-radius: 10px; */
+    /* box-shadow: var(--shadow); */
+    padding: 0rem 2.5rem;
+
 }
 .item-comp__data {
-    width: 80%;
+    width: 70%;
     /* border: var(--border); */
     padding: 0 1.5rem 0 0;
-    flex-grow: 4;
+    flex-grow: 2;
 }
-.item-comp__actions {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* border: var(--border); */
-    flex-grow: 1;
-
-}
-
 .item-comp__data--title {
     color:var(--color-default);
+    font-size: 1rem;
 }
 .item-comp__data--description {
     height: max-content;
@@ -72,6 +90,16 @@ const props = defineProps<{
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: 0.85rem;
     margin: .6rem 0 0 .6rem;
 }
+.item-comp__actions {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: var(--border); */
+    flex-grow: 1;
+}
+
 </style>

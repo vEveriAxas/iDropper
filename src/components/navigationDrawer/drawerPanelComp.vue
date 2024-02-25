@@ -17,6 +17,19 @@
         <v-divider></v-divider>
 
         <v-list density="compact" nav>
+            <!-- НАСТРОЙКИ -->
+            <v-list-item 
+            id="item-drawer-settings"
+            prepend-icon="mdi-cog" 
+            title="Настройки"
+            base-color="var(--color-drawer)"
+            @click="router.push({name: 'hospitals'})"
+            value="hospitals">
+                <template v-slot:append>
+                    <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>
+                </template>
+            </v-list-item>
+
             <!-- БОЛЬНИЦЫ -->
             <v-list-item 
             prepend-icon="mdi-hospital-building" 
@@ -46,8 +59,8 @@
             prepend-icon="mdi-table-large" 
             title="Палаты"
             base-color="var(--color-drawer)"
-            @click="router.push({name: 'chambers'})"
-            value="chambers">
+            @click="router.push({name: 'hospitalRooms'})"
+            value="hospitalRooms">
                 <template v-slot:append>
                     <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>
                 </template>
@@ -58,8 +71,8 @@
             prepend-icon="mdi-bed-outline" 
             title="Койки"
             base-color="var(--color-drawer)"
-            @click="router.push({name: 'beds'})"
-            value="beds">
+            @click="router.push({name: 'hospitalBeds'})"
+            value="hospitalBeds">
                 <template v-slot:append>
                     <v-icon variant="text" v-show="false" icon="mdi-chevron-right"></v-icon>
                 </template>
