@@ -3,6 +3,7 @@
 interface UserServer {
     id: number | string;
     full_name: string | null;
+    email: string | null;
     tel: string | null; 
     is_active: boolean | null;
     is_superuser: boolean | false;
@@ -14,6 +15,7 @@ interface UserClient {
     id: number | string;
     fullName: string | null;
     tel: string | null; 
+    email: string | null;
     isActive: boolean | null;
     isSuperuser: boolean | null;
     lastActivity: string | null;

@@ -1,17 +1,39 @@
 <template>
-    <div class="employees">
-        Employees        
+    <div class="employees-main">
+        <div class="employees-main__wrapper">
+            <employeesListComp :employees="employees"/>
+        </div>        
     </div>
 </template>
 
 <script setup lang="ts">
+import employeesListComp from './employeesListComp.vue';
+import { getAllDUsersDB } from '../../api/userApi';
+import { ArrayUserClient } from '../../types/userType'
+import { ref, onMounted } from 'vue';
+
+const employees = ref<ArrayUserClient>([]);
+
+// Получение массива СОТРУДНИКОВ с БД
+onMounted(async () => {
+    try {
+        employees.value = await getAllDUsersDB();
+    } catch (err) {
+        throw new Error(`components/employees/employeesComp: onMounted  => ${err}`);
+    }
+});
 
 </script>
 
 <style scoped>
-.employees {
+.employees-main {
     width: 100%;
     height: 100%;
-    padding: 0.9rem 1rem 2rem 4rem;
+    padding: 0 1rem 0 4rem;
+}
+.employees-main__wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color-white);
 }
 </style>
