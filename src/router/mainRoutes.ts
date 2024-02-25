@@ -5,6 +5,7 @@ import departmentsMainComp from '../components/departments/departmentsMainComp.v
 import hospitalRoomsMainComp from '../components/hospitalRooms/hospitalRoomsMainComp.vue';
 import hospitalBedsMainComp from '../components/hospitalBeds/hospitalBedsMainComp.vue';
 import statisticsComp from '../components/statistics/statisticsComp.vue';
+import employeesComp from '../components/employees/employeesComp.vue';
 
 export default  [
     {
@@ -60,6 +61,15 @@ export default  [
                     requireAuth: true,
                 }
             },
+            // СОТРУДНИКИ
+            {
+                path: 'employees',
+                name: 'employees',
+                component: employeesComp,
+                meta: {
+                    requireAuth: true,
+                }
+            }
         ],
     },
 ] as Array<RouteRecordRaw>

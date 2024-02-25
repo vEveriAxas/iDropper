@@ -10,7 +10,7 @@
     bg-color="var(--bg-color-white)"
     color="var(--color-default)"
     base-color="var(--color-default)"
-    :density="'comfortable'"
+    :density="'compact'"
     :hide-details="true"
 >
     <!-- Компонент для отображения загрузки -->

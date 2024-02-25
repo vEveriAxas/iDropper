@@ -7,7 +7,7 @@
         v-model="value"
         color="var(--color-default)"
         rounded="lg"
-        density="comfortable"
+        :density="'compact'"
         variant="solo"
         hide-details
         label="Поиск"
@@ -17,7 +17,7 @@
         <v-btn
         class="search-block__btn"
         icon="mdi-magnify"
-        density="comfortable"
+        :density="'compact'"
         color="var(--bg-color-default)"
         rounded="lg"
         ></v-btn>
@@ -41,8 +41,8 @@ const value = defineModel<string>('value')
 }
 
 .search-block__btn {
-    width: 40px !important;
-    height: 40px !important;
+    width: 35px!important;
+    height: 35px !important;
     margin-left: 10px;
     color: var(--color-white);
 }
