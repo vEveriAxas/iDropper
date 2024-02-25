@@ -9,16 +9,6 @@
         <dialogComp v-model="isShowDialog" @close="isShowDialog = false" />
 
         <div class="items-list__content-container" v-if="!!props.items.length" >
-            <div class="items-list__action-block">
-                <v-btn
-                @click="isShowDialog = true"
-                append-icon="mdi-plus"
-                style="color: var(--color-white);"
-                :density="'comfortable'"
-                color="var(--bg-color-default)"
-                >Создать</v-btn>
-            </div>
-    
             <!-- Отрисовка элеменитов списка -->
             <v-table
             class="items-list__wrapper"
