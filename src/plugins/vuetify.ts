@@ -15,6 +15,7 @@ const vuetify = createVuetify({
             // Регистрация псевдонимов
             ...aliases,
             account: icons.mdiYoutube,
+            medication: icons.mdiMedication,
         },
         sets: {
             mdi,
