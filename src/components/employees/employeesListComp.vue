@@ -17,7 +17,7 @@
         <!-- Контент список -->
         <div class="employees-list__content-container" v-if="!!props.employees.length">
             <!-- Отрисовка элеменитов списка -->
-            <v-table class="employees-list__wrapper" :density="'compact'" fixed-header>
+            <v-table class="employees-list__wrapper" :density="'comfortable'" fixed-header>
                 <thead>
                     <tr>
                         <th class="text-left th"
