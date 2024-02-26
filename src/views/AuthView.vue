@@ -12,7 +12,9 @@ import { aliases } from 'vuetify/iconsets/mdi';
                     <v-text-field 
                     class="input-block__input"
                     bg-color="var(--bg-color-white)"
+                    v-model.trim="email"
                     variant="solo-filled"
+                    :rules="emailRules"
                     rounded="lg"
                     placeholder="Адрес электронной почты"
                     ></v-text-field>
@@ -23,7 +25,9 @@ import { aliases } from 'vuetify/iconsets/mdi';
                     <v-card-subtitle class="input-block__subtitle">Пароль</v-card-subtitle>
                     <v-text-field 
                     class="input-block__input"
+                    v-model.trim="password"
                     variant="solo-filled"
+                    :rules="passwordRules"
                     rounded="lg"
                     bg-color="var(--bg-color-white)"
                     placeholder="Введите пароль"
@@ -33,6 +37,7 @@ import { aliases } from 'vuetify/iconsets/mdi';
                 <v-btn 
                 class="auth-form__confirm-btn"
                 density="default"
+                @click="login"
                 >Подтвердить</v-btn>
 
                 <!-- Блок Подсказка "Забыли пароль?" -->
@@ -47,6 +52,32 @@ import { aliases } from 'vuetify/iconsets/mdi';
 </template>
   
 <script setup lang="ts">
+import { ref } from 'vue';
+import { loginEmailPassword } from '../api/authApi';
+
+const email = ref<string>('');
+const password = ref<string>('');
+
+async function login() {
+    try {
+        await loginEmailPassword(email.value, password.value);
+    } catch (err) {
+        throw new Error(`views/AuthView: login  => ${err}`);
+    }
+}
+
+// Правила ввода E-Mail
+const emailRules = ref([
+    (value: string) => !!value || "E-mail обязательное поле",
+    (value: string) => /.+@.+\..+/.test(value) || "Введите корректный E-mail",
+]);
+
+// // Правила ввода Пароля
+const passwordRules = ref([ 
+  (value: string) => !!value || "Пароль обязательное поле",
+  (value: string) => (value && value.length >= 8) || "Минимальная длина пароля 8 символов",
+]);
+
 
 </script>
 
