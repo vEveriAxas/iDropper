@@ -13,7 +13,7 @@ interface HospitalClient {
     id: number | string;
     name: string | null;
     address: string | null; 
-    chiefID: number | string;
+    chiefId: number | string;
 }
 
 // Массив может быть либо пустым, либо с объектами
