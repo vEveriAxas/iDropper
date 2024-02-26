@@ -1,23 +1,31 @@
 <template>
     <!-- Компонент для отрисовки Списка Сотрудников -->
-    <div class="employees-list__container">
+    <div class="hospitals-list__container">
 
         <!-- Заголовок -->
-        <div class="employees-list__header">
-            <h1 class="employees-list__header--title">Сотрудники</h1>
+        <div class="hospitals-list__header">
+            <h1 class="hospitals-list__header--title">Больницы</h1>
         </div>
 
-        <!-- Диалоговое окно -->
-        <dialogComp 
+        <!-- Диалоговое окно с данными о выбранном элементе -->
+        <hospitalsDialogComp 
         v-model="isShowDialog"
         @close="isShowDialog = false" 
-        :employee-data="selectEmployeeData"
+        :data="selectHospitalData"
+        />
+
+        <!-- Диалоговое окно для подтверждения удаления элемента -->
+        <deletedDialogComp 
+        v-model="isShowDeletedDialog" 
+        @cancel="isShowDeletedDialog = false"
+        :title="`больницу `"
+        :subtitle="`${selectHospitalData?.name}`"
         />
 
         <!-- Контент список -->
-        <div class="employees-list__content-container" v-if="!!props.employees.length">
+        <div class="hospitals-list__content-container" v-if="!!props.hospitals.length">
             <!-- Отрисовка элеменитов списка -->
-            <v-table class="employees-list__wrapper" :density="'comfortable'" fixed-header>
+            <v-table class="hospitals-list__wrapper" :density="'comfortable'" fixed-header>
                 <thead>
                     <tr>
                         <th class="text-left th"
@@ -25,18 +33,15 @@
                             №
                         </th>
                         <th class="text-left th">
-                            ФИО
+                            Название
                         </th>
                         <th class="text-left th">
-                            Телефон
+                            Адрес
                         </th>
                         <th class="text-left th">
-                            E-mail
+                            Управляющий
                         </th>
-                        <th class="text-left th">
-                            Статус
-                        </th>
-                        <th class="text-center th actions-th">
+                        <th class="text-left th actions-th">
                             Действия
                         </th>
                     </tr>
@@ -44,25 +49,40 @@
                 <tbody>
                     <tr 
                     class="row-hover" 
-                    @click="() => selectEmployee(employee)"
-                    v-for="(employee, index) in props.employees" 
-                    :key="employee.id">
+                    @click="() => selectHospital(hospital)"
+                    v-for="(hospital, index) in props.hospitals" 
+                    :key="hospital.id">
                         <!-- № Номер -->
                         <td class="list-item">{{ index + 1 }}</td>
-                        <!-- ФИО -->
-                        <td class="list-item">{{ employee?.fullName }}</td>
-                        <!-- ТЕЛЕФОН -->
-                        <td class="list-item">{{ employee?.tel }}</td>
-                        <!-- E-mail -->
-                        <td class="list-item">{{ employee?.email }}</td>
-                        <!-- СТАТУС -->
-                        <td class="list-item">{{ employee?.isActive }}</td>
+                        <!-- Название -->
+                        <td class="list-item">{{ hospital?.name }}</td>
+                        <!-- Адрес -->
+                        <td class="list-item">{{ hospital?.address }}</td>
+                        <!-- Управляющий -->
+                        <td class="list-item">{{ hospital?.chiefId }}</td>
                         <!-- ДЕЙСТВИЯ -->
                         <td class="list-item actions-td">
-                            <v-btn class="actions__btn" rounded="xl" variant="text" width="max-content">
+
+                            <!-- Редактировать -->
+                            <v-btn 
+                            class="actions__btn" 
+                            rounded="xs" 
+                            variant="text" 
+                            width="max-content"
+                            :density="'compact'"
+                            >
                                 <v-icon icon="mdi-pen" :color="'var(--color-default)'"></v-icon>
                             </v-btn>
-                            <v-btn class="actions__btn del" rounded="xl" variant="text" :width="'15px'">
+
+                            <!-- Удалить -->
+                            <v-btn 
+                            class="actions__btn del"
+                            @click.stop="selectHospital(hospital, true)"
+                            rounded="xs" 
+                            variant="text" 
+                            :width="'15px'"
+                            :density="'compact'"
+                            >
                                 <v-icon icon="mdi-delete" :color="'red'"></v-icon>
                             </v-btn>
                         </td>
@@ -85,30 +105,35 @@
 </template>
 
 <script setup lang="ts">
-import dialogComp from '../general/dialogComp.vue';
-import { UserClient } from '../../types/userType';
+import hospitalsDialogComp from './hospitalsDialogComp.vue';
+import deletedDialogComp from '../general/deletedDialogComp';
+import { HospitalClient } from '../../types/hospitalType';
 import { ref, defineProps } from 'vue';
 
 const props = defineProps<{
-    employees: Array<any>,
+    hospitals: Array<any>,
 }>();
 
 // ============   DATA   ==============
-const isShowDialog = ref(false);
-const selectEmployeeData = ref<UserClient | null | undefined>(null);
+const isShowDialog = ref(true);
+const isShowDeletedDialog = ref(false);
+const selectHospitalData = ref<HospitalClient | null | undefined>(null);
 
 // ============   METHODS   ============
-function selectEmployee(employee: UserClient | undefined | null) {
-    selectEmployeeData.value = employee;
-    isShowDialog.value = true;
+function selectHospital(hospital: HospitalClient | undefined | null, isDeleted?: boolean) {
+    selectHospitalData.value = hospital;
+    if(isDeleted !== true) {
+        isShowDialog.value = true;
+    } else {
+        isShowDeletedDialog.value = true;
+    }
 }
-// ============   LIFECYCLE HOOKS   ============
 
+// ============   LIFECYCLE HOOKS   ============
 
 </script>
 
 <style scoped>
-
 .progress-circular {
     position: absolute;
     display: flex;
@@ -130,19 +155,19 @@ function selectEmployee(employee: UserClient | undefined | null) {
     transition: background-color 0.4s ease;
 }
 
-.employees-list__container {
+.hospitals-list__container {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100% !important;
     height: 100% !important;
     background-color: var(--bg-color-white);
     overflow: hidden;
 }
 
-.employees-list__header {
+.hospitals-list__header {
     display: flex;
     justify-content: center;
     width: 100%;
@@ -153,21 +178,22 @@ function selectEmployee(employee: UserClient | undefined | null) {
     z-index: 20;
 }
 
-.employees-list__header--title {
+.hospitals-list__header--title {
     font-family: var(--font);
     font-size: 1rem;
     font-weight: normal;
 }
 
-.employees-list__content-container {
+.hospitals-list__content-container {
     position: relative;
     width: 99%;
     height: 98%;
     top: 0;
+    /* height: max-content; */
     max-height: 100%;
 }
 
-.employees-list__action-block {
+.hospitals-list__action-block {
     position: relative;
     margin: 2rem 0 1rem 0;
 }
@@ -196,7 +222,7 @@ function selectEmployee(employee: UserClient | undefined | null) {
     border: 1px solid red;
 }
 
-.employees-list__wrapper {
+.hospitals-list__wrapper {
     position: relative;
     width: 100%;
     height: 100%;

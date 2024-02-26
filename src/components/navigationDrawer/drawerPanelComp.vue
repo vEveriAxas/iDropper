@@ -32,11 +32,11 @@
             <v-list-group>
                 <template v-slot:activator="{ props }">
                     <div v-bind="props">
-                    <v-list-item
-                        base-color="var(--color-drawer)"
-                        prepend-icon="mdi-cog" 
-                        title="Настройки"
-                    ></v-list-item>
+                        <v-list-item
+                            base-color="var(--color-drawer)"
+                            prepend-icon="mdi-cog" 
+                            title="Настройки"
+                        ></v-list-item>
                     </div>
                 </template>
                 
@@ -108,7 +108,7 @@
 </template> 
 
 <script setup lang="ts">
-import { ref, defineProps } from 'vue';
+import { defineProps } from 'vue';
 import { useRouter } from 'vue-router';
 const router = useRouter();
 
@@ -118,8 +118,6 @@ const props = defineProps<{
 }>();
 
 // ============================  DATA  ================================
-
-const rail = ref(false)
 
 </script>
 

@@ -33,6 +33,7 @@ import { aliases } from 'vuetify/iconsets/mdi';
                 <v-btn 
                 class="auth-form__confirm-btn"
                 density="default"
+                @click="router.push({name: 'main'})"
                 >Подтвердить</v-btn>
 
                 <!-- Блок Подсказка "Забыли пароль?" -->
@@ -47,6 +48,8 @@ import { aliases } from 'vuetify/iconsets/mdi';
 </template>
   
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+const router = useRouter();
 
 </script>
 
