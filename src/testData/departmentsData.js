@@ -18,12 +18,12 @@ export default [
     {
         "id": 4,
         "name": "OB/GYN",
-        "hospital_id": 4
+        "hospital_id": 3
     },
     {
         "id": 5,
         "name": "Cardiology",
-        "hospital_id": 5
+        "hospital_id": 3
     },
     {
         "id": 6,

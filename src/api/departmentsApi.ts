@@ -20,6 +20,29 @@ async function getAllDepartmentsDB(): Promise<ArrayDepartmentClient> {
     }
 }
 
+// Получение ОТДЕЛЕНИЙ конкретной больницы
+async function getHospitalDepartmentsDB(hospitalID: string | number | undefined): Promise<ArrayDepartmentClient> {
+    try {
+        // Получение данных с сервера
+        const promise: Promise<ArrayDepartmentServer> = new Promise((resovle) => {
+            setTimeout(() => {
+                const res = departments.filter((department) => {
+                    if(hospitalID == department.hospital_id) return true;
+                });
+                resovle(res);
+            }, 500);
+        });
+        const response = await promise;
+        // Форматировение ключей объекта с snake_case в CamelCase
+        
+        return convertKeysToCamelCase(response);
+    } catch (err) {
+        throw new Error(`api/departmentsApi: getAllDepartmentsDB  => ${err}`);
+    }
+}
+
+
 export {
     getAllDepartmentsDB,
+    getHospitalDepartmentsDB,
 }

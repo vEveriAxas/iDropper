@@ -1,20 +1,16 @@
 <template>
     <!-- Главный Блок для взаимодействия с Больницами -->
     <div class="hospitals-main">
-
-        <!-- Список Палат -->
-        <itemsListComp 
-        :main-title="'больницы'"
-        :items="hospitals"
-        @select-item="false"/>
-    
+        <div class="hospitals-main__wrapper">
+            <hospitalsListComp :hospitals="hospitals"/>
+        </div>        
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 // COMPONENTS
-import itemsListComp from '../itemsList/itemsListComp.vue';
+import hospitalsListComp from './hospitalsListComp.vue';
 // API
 import { getAllHospitalDB } from '../../api/hospitalsApi';
 // TYPES
@@ -28,6 +24,7 @@ const hospitals = ref<Array<HospitalClient> | []>([]);
 onMounted(async () => {
     try {
         hospitals.value = await getAllHospitalDB();
+        // hospitals.value = [];
     } catch (err) {
         throw new Error(`components/departments/departmentsMainComp: onMounted  => ${err}`);
     }
@@ -37,11 +34,13 @@ onMounted(async () => {
 
 <style scoped>
 .hospitals-main {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: 100%;
     height: 100%;
+    padding: 0 1rem 0 4rem;
+}
+.hospitals-main__wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color-white);
 }
 </style>

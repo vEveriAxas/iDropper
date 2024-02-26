@@ -1,4 +1,3 @@
-import { aliases } from 'vuetify/iconsets/mdi';
 <template>
     <div class="auth-view">
         <v-card class="auth-form__container">

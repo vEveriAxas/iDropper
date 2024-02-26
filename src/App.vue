@@ -44,6 +44,7 @@ onMounted(() => {
     /* --bg-color-default: #359ABA; */
     --bg-color-default: #0ea5e9;
     --bg-color-default-light: #0ea4e969;
+    --bg-color-default-light-2: #0ea4e993;
     --bg-color-op-blue: rgba(12, 151, 194, 0.17);
     --bg-color-gray: #D9D9D9;
     --bg-color-scrollbar: #359bbab7;
