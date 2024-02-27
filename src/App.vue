@@ -8,20 +8,19 @@
 <script setup lang="ts">
 import navbarComp from './components/navbar/navbarComp.vue';
 import { useRoute } from 'vue-router';
-import { onMounted, ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const route = useRoute();
 
 const isShowUserActions = ref<boolean>(false);
 
-onMounted(() => {
-    setTimeout(() => {
-        const routePath: Array<string> = route.fullPath.split('/');
-        if (routePath[1] === 'main') {
-            isShowUserActions.value = true;
-        }
-    }, 0);
+// Рендеринг имени пользователя на навбаре относительно маршрутов требующих авторизацию в системе
+watch(() => route.name, (routeName) => {
+    if(routeName !== 'auth' && routeName !== 'default' && routeName !== 'notFound') {
+        isShowUserActions.value = true;
+    }
 });
+
 
 </script>
 

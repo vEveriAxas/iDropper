@@ -14,6 +14,7 @@
                     bg-color="var(--bg-color-white)"
                     v-model.trim="email"
                     variant="solo-filled"
+                    name="email"
                     :rules="emailRules"
                     rounded="lg"
                     placeholder="Адрес электронной почты"
