@@ -1,5 +1,6 @@
 <template>
     <div class="auth-view">
+        <!-- Уведомление об успешном выполнении -->
         <success-note-comp @complete="isCompleteAuth"></success-note-comp>
         <v-card class="auth-form__container">
             <v-form class="auth-form" @submit.prevent>
