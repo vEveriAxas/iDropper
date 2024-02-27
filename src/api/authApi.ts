@@ -19,6 +19,7 @@ async function loginEmailPassword(email: string, password: string) {
         throw new Error(`api/authApi: loginEmailPassword  => ${err}`);
     }
 }
+console.log('Hello from authAPI');
 
 
 export {
