@@ -1,5 +1,6 @@
 <template>
     <div class="auth-view">
+        <success-note-comp @complete="isCompleteAuth"></success-note-comp>
         <v-card class="auth-form__container">
             <v-form class="auth-form" @submit.prevent>
                 <!-- Заголовок "Авторизация" -->
@@ -37,6 +38,7 @@
                 class="auth-form__confirm-btn"
                 density="default"
                 @click="login"
+                :loading="isLoading"
                 >Подтвердить</v-btn>
 
                 <!-- Блок Подсказка "Забыли пароль?" -->
@@ -51,17 +53,33 @@
 </template>
   
 <script setup lang="ts">
-import { ref } from 'vue';
 import { loginEmailPassword } from '../api/authApi';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter(); 
+const isLoading = ref(false);
 
 const email = ref<string>('');
 const password = ref<string>('');
 
 async function login() {
     try {
+        isLoading.value = true;
         await loginEmailPassword(email.value, password.value);
     } catch (err) {
         throw new Error(`views/AuthView: login  => ${err}`);
+    } finally {
+        isLoading.value = false;
+    }
+}
+
+// После успешной авторизации и скрытия уведомления, переходим на маршруты системы
+function isCompleteAuth() {
+    try {
+        router.push({ name: 'main' });
+    } catch (err) {
+        throw new Error(`views/AuthView: isCompleteAuth  => ${err}`);
     }
 }
 

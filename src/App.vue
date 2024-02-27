@@ -48,13 +48,14 @@ onMounted(() => {
     --bg-color-op-blue: rgba(12, 151, 194, 0.17);
     --bg-color-gray: #D9D9D9;
     --bg-color-scrollbar: #359bbab7;
+    --bg-color-note-succ: rgba(104, 202, 80, 0.815);
 
     /* Hover color */
     --hover-default: #D9D9D9;
 
     /* Color text */
     --color-default: #359ABA;
-    /* --color-default: #415174; */
+    --color-note-succ: rgb(14, 104, 14);
     --color-drawer: #236690;
     --color-gray: rgb(95, 95, 95);
     --color-white: #FFFFFF;
